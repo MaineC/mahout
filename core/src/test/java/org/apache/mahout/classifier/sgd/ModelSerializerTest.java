@@ -17,18 +17,6 @@
 
 package org.apache.mahout.classifier.sgd;
 
-import com.google.common.io.Closeables;
-import org.apache.hadoop.io.Writable;
-import org.apache.mahout.classifier.OnlineLearner;
-import org.apache.mahout.common.MahoutTestCase;
-import org.apache.mahout.common.RandomUtils;
-import org.apache.mahout.math.DenseVector;
-import org.apache.mahout.math.Vector;
-import org.apache.mahout.math.function.Functions;
-import org.apache.mahout.math.function.DoubleFunction;
-import org.apache.mahout.math.stats.GlobalOnlineAuc;
-import org.apache.mahout.math.stats.OnlineAuc;
-import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -36,6 +24,20 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Random;
+
+import org.apache.hadoop.io.Writable;
+import org.apache.mahout.classifier.OnlineLearner;
+import org.apache.mahout.common.MahoutTestCase;
+import org.apache.mahout.common.RandomUtils;
+import org.apache.mahout.math.DenseVector;
+import org.apache.mahout.math.Vector;
+import org.apache.mahout.math.function.DoubleFunction;
+import org.apache.mahout.math.function.Functions;
+import org.apache.mahout.math.stats.GlobalOnlineAuc;
+import org.apache.mahout.math.stats.OnlineAuc;
+import org.junit.Test;
+
+import com.google.common.io.Closeables;
 
 public final class ModelSerializerTest extends MahoutTestCase {
 

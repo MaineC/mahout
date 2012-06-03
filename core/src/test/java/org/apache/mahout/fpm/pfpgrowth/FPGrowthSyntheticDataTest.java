@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
 import com.google.common.collect.Maps;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.mahout.common.MahoutTestCase;
@@ -39,6 +40,7 @@ import com.google.common.io.Resources;
 
 public final class FPGrowthSyntheticDataTest extends MahoutTestCase {
 
+  @Nightly
   @Test
   public void testSpecificCasesFromSynthData() throws IOException {
     FPGrowthObj<String> fp = new FPGrowthObj<String>();

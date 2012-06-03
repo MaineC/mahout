@@ -18,12 +18,17 @@
 package org.apache.mahout.common;
 
 import java.io.File;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
 
+//import com.carrotsearch.randomizedtesting.JUnit4MethodProvider;
+//import com.carrotsearch.randomizedtesting.RandomizedRunner;
+//import com.carrotsearch.randomizedtesting.annotations.TestMethodProviders;
+//import com.carrotsearch.randomizedtesting.annotations.ThreadLeaks;
 import com.google.common.base.Charsets;
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
@@ -31,7 +36,13 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.runner.RunWith;
 
+//@RunWith(RandomizedRunner.class)
+//@TestMethodProviders({
+//  JUnit4MethodProvider.class
+//})
+//@ThreadLeaks(linger = 1000, failTestIfLeaking = true)
 public abstract class MahoutTestCase extends org.apache.mahout.math.MahoutTestCase {
 
   /** "Close enough" value for floating-point comparisons. */
