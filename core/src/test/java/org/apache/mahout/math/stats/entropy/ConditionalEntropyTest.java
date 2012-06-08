@@ -17,6 +17,8 @@
 
 package org.apache.mahout.math.stats.entropy;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -34,6 +36,7 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
+@Nightly
 public final class ConditionalEntropyTest extends MahoutTestCase {
 
   @Test

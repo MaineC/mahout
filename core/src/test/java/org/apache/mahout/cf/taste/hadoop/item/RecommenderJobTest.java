@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.collect.Maps;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.IntWritable;
@@ -56,6 +58,7 @@ import org.easymock.IArgumentMatcher;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+@Nightly
 public class RecommenderJobTest extends TasteTestCase {
 
   /**

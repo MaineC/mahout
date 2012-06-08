@@ -41,6 +41,9 @@ import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.io.Closeables;
 
 /**
@@ -51,6 +54,8 @@ import com.google.common.io.Closeables;
  * configured.
  * 
  */
+
+@Nightly
 public class LocalSSVDSolverSparseSequentialTest extends MahoutTestCase {
 
   private static final double s_epsilon = 1.0E-10d;

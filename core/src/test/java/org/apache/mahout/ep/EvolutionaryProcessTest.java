@@ -54,6 +54,7 @@ public final class EvolutionaryProcessTest extends MahoutTestCase {
 
     assertNotNull(best);
     assertEquals(0.0, best.getValue(), 0.02);
+    ep.close();
   }
 
   private static class Foo implements Payload<Double> {

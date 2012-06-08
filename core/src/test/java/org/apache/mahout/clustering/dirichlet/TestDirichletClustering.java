@@ -34,8 +34,11 @@ import org.apache.mahout.math.VectorWritable;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.collect.Lists;
 
+@Nightly
 public final class TestDirichletClustering extends MahoutTestCase {
 
   private List<VectorWritable> sampleData;

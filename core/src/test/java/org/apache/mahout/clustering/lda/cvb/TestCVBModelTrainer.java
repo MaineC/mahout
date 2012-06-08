@@ -16,6 +16,8 @@
  */
 package org.apache.mahout.clustering.lda.cvb;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import org.apache.hadoop.conf.Configuration;
@@ -32,6 +34,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+@Nightly
 public class TestCVBModelTrainer extends MahoutTestCase {
 
   private static final double ETA = 0.1;

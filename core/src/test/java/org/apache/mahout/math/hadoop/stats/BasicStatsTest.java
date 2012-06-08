@@ -1,4 +1,21 @@
 package org.apache.mahout.math.hadoop.stats;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.SequenceFile;
+import org.apache.mahout.common.MahoutTestCase;
+import org.apache.mahout.common.RandomUtils;
+import org.apache.mahout.math.jet.random.Normal;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Random;
+
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -17,20 +34,8 @@ package org.apache.mahout.math.hadoop.stats;
  */
 
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.DoubleWritable;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.SequenceFile;
-import org.apache.mahout.common.MahoutTestCase;
-import org.apache.mahout.common.RandomUtils;
-import org.apache.mahout.math.jet.random.Normal;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.Random;
-
+@Nightly
 public final class BasicStatsTest extends MahoutTestCase {
 
   private Configuration conf;

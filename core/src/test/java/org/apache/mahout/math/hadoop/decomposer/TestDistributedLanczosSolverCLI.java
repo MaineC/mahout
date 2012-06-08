@@ -17,6 +17,8 @@
 
 package org.apache.mahout.math.hadoop.decomposer;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.collect.Lists;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -36,6 +38,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Collection;
 import java.util.Arrays;
 
+@Nightly
 public final class TestDistributedLanczosSolverCLI extends MahoutTestCase {
   private static final Logger log = LoggerFactory.getLogger(TestDistributedLanczosSolverCLI.class);
 

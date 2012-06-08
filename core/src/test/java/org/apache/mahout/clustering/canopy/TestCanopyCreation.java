@@ -47,9 +47,12 @@ import org.apache.mahout.math.VectorWritable;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.collect.Lists;
 import com.google.common.io.Closeables;
 
+@Nightly
 public final class TestCanopyCreation extends MahoutTestCase {
 
   private static final double[][] RAW = { { 1, 1 }, { 2, 1 }, { 1, 2 },

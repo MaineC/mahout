@@ -17,6 +17,9 @@
 
 package org.apache.mahout.math.ssvd;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.collect.Lists;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.DenseMatrix;
@@ -42,6 +45,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Nightly
 public final class SequentialOutOfCoreSvdTest extends MahoutTestCase {
 
   private File tmpDir;

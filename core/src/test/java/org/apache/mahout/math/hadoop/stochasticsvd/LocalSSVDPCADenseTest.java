@@ -42,8 +42,11 @@ import org.apache.mahout.math.VectorWritable;
 import org.apache.mahout.math.function.Functions;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.io.Closeables;
 
+@Nightly
 public class LocalSSVDPCADenseTest extends MahoutTestCase {
 
   private static final double s_epsilon = 1.0E-10d;

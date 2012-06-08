@@ -29,6 +29,9 @@ import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Vector;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 /**
  * 
  * Tests SSVD solver with a made-up data running hadoop solver in a local mode.
@@ -37,6 +40,8 @@ import org.junit.Test;
  * configured.
  * 
  */
+
+@Nightly
 public class LocalSSVDSolverDenseTest extends MahoutTestCase {
 
   private static final double s_epsilon = 1.0E-10d;

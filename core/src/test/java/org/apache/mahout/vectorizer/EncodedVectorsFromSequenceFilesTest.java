@@ -17,6 +17,8 @@
 
 package org.apache.mahout.vectorizer;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -37,6 +39,7 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
+@Nightly
 public class EncodedVectorsFromSequenceFilesTest extends MahoutTestCase {
 
   private static final int NUM_DOCS = 100;

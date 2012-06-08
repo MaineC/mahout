@@ -16,6 +16,8 @@
  */
 package org.apache.mahout.clustering.minhash;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.collect.Lists;
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
@@ -42,6 +44,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+@Nightly
 public class TestMinHashClustering extends MahoutTestCase {
   
   private static final double[][] REFERENCE = { {1, 2, 3, 4, 5}, {2, 1, 3, 6, 7}, {3, 7, 6, 11, 8, 9},

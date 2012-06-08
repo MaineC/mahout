@@ -17,6 +17,8 @@
 
 package org.apache.mahout.math.stats.entropy;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -27,6 +29,7 @@ import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
+@Nightly
 public final class InformationGainRatioTest extends MahoutTestCase {
 
   @Test

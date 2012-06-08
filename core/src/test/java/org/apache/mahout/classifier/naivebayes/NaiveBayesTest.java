@@ -17,6 +17,8 @@
 
 package org.apache.mahout.classifier.naivebayes;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -35,6 +37,7 @@ import org.junit.Test;
 
 import java.io.File;
 
+@Nightly
 public class NaiveBayesTest extends MahoutTestCase {
 
   private Configuration conf;

@@ -27,6 +27,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -45,6 +47,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.io.Resources;
 
+@Nightly
 public class PFPGrowthRetailDataTest extends MahoutTestCase {
   
   private final Parameters params = new Parameters();

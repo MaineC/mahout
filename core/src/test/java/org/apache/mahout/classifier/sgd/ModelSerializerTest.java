@@ -130,6 +130,8 @@ public final class ModelSerializerTest extends MahoutTestCase {
     assertEquals(learner.auc(), olr3.auc(), 0.005);
     double auc2 = learner.auc();
     assertTrue(String.format("%.3f > %.3f", auc2, auc1), auc2 > auc1);
+    learner.close();
+    olr3.close();
   }
 
   private static void train(OnlineLearner olr, int n) {

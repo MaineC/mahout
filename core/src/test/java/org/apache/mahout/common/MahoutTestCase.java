@@ -25,10 +25,10 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
 
-//import com.carrotsearch.randomizedtesting.JUnit4MethodProvider;
-//import com.carrotsearch.randomizedtesting.RandomizedRunner;
-//import com.carrotsearch.randomizedtesting.annotations.TestMethodProviders;
-//import com.carrotsearch.randomizedtesting.annotations.ThreadLeaks;
+import com.carrotsearch.randomizedtesting.JUnit4MethodProvider;
+import com.carrotsearch.randomizedtesting.RandomizedRunner;
+import com.carrotsearch.randomizedtesting.annotations.TestMethodProviders;
+import com.carrotsearch.randomizedtesting.annotations.ThreadLeaks;
 import com.google.common.base.Charsets;
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
@@ -38,11 +38,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-//@RunWith(RandomizedRunner.class)
-//@TestMethodProviders({
-//  JUnit4MethodProvider.class
-//})
-//@ThreadLeaks(linger = 1000, failTestIfLeaking = true)
+@RunWith(RandomizedRunner.class)
+@TestMethodProviders({
+  JUnit4MethodProvider.class
+})
+@ThreadLeaks(linger = 1000, failTestIfLeaking = true)
 public abstract class MahoutTestCase extends org.apache.mahout.math.MahoutTestCase {
 
   /** "Close enough" value for floating-point comparisons. */

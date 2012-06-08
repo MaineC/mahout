@@ -36,6 +36,9 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.Iterator;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
+@Nightly
 public class ParallelALSFactorizationJobTest extends TasteTestCase {
 
   private static final Logger log = LoggerFactory.getLogger(ParallelALSFactorizationJobTest.class);

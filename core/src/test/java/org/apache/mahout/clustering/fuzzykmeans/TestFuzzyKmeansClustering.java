@@ -41,8 +41,11 @@ import org.apache.mahout.math.VectorWritable;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.io.Closeables;
 
+@Nightly
 public final class TestFuzzyKmeansClustering extends MahoutTestCase {
 
   private FileSystem fs;

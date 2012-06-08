@@ -40,10 +40,13 @@ import org.apache.mahout.math.decomposer.SolverTest;
 import org.apache.mahout.math.function.Functions;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.base.Function;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Maps;
 
+@Nightly
 public final class TestDistributedRowMatrix extends MahoutTestCase {
   public static final String TEST_PROPERTY_KEY = "test.property.key";
   public static final String TEST_PROPERTY_VALUE = "test.property.value";

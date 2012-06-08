@@ -28,6 +28,9 @@ import org.junit.Test;
 
 import java.io.File;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
+@Nightly
 public class RowSimilarityJobTest extends MahoutTestCase {
 
   /**

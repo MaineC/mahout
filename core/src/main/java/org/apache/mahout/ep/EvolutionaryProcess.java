@@ -173,6 +173,9 @@ public class EvolutionaryProcess<T extends Payload<U>, U> implements Writable, C
 
   public void setThreadCount(int threadCount) {
     this.threadCount = threadCount;
+    if (pool != null) {
+      close();
+    }
     pool = Executors.newFixedThreadPool(threadCount);
   }
 

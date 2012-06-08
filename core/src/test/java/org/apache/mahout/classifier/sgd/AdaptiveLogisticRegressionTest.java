@@ -68,6 +68,7 @@ public final class AdaptiveLogisticRegressionTest extends MahoutTestCase {
       }
     }
     assertEquals(1, x.auc(), 0.1);
+    x.close();
   }
 
   private static AdaptiveLogisticRegression.TrainingExample getExample(int i, Random gen, Vector beta) {

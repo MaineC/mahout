@@ -48,8 +48,11 @@ import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.collect.Lists;
 
+@Nightly
 public final class TestClusterClassifier extends MahoutTestCase {
   
   private static ClusterClassifier newDMClassifier() {

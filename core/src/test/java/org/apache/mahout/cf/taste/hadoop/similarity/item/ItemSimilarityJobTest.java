@@ -23,6 +23,8 @@ import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import org.apache.hadoop.conf.Configuration;
@@ -45,6 +47,7 @@ import org.junit.Test;
  * Unit tests for the mappers and reducers in org.apache.mahout.cf.taste.hadoop.similarity.item
  * some integration tests with tiny data sets at the end
  */
+@Nightly
 public final class ItemSimilarityJobTest extends TasteTestCase {
 
   private static final Pattern TAB = Pattern.compile("\t");
