@@ -52,8 +52,7 @@ import org.slf4j.LoggerFactory;
  * wikipedia article</a>.
  */
 
-public class ConjugateGradientSolver
-{
+public class ConjugateGradientSolver {
   public static final double DEFAULT_MAX_ERROR = 1.0e-9;
   
   private static final Logger log = LoggerFactory.getLogger(ConjugateGradientSolver.class);

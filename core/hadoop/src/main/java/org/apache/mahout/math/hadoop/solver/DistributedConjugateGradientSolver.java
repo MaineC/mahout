@@ -18,17 +18,13 @@
 package org.apache.mahout.math.hadoop.solver;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
+import org.apache.hadoop.conf.Configurable;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.SequenceFile;
-import org.apache.hadoop.util.Tool;
-import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
 import org.apache.mahout.math.hadoop.DistributedRowMatrix;
@@ -39,10 +35,9 @@ import org.apache.mahout.math.solver.Preconditioner;
  * Distributed implementation of the conjugate gradient solver. More or less, this is just the standard solver
  * but wrapped with some methods that make it easy to run it on a DistributedRowMatrix.
  */
-public class DistributedConjugateGradientSolver extends ConjugateGradientSolver implements Tool {
+public class DistributedConjugateGradientSolver extends ConjugateGradientSolver implements Configurable {
 
   private Configuration conf; 
-  private Map<String, List<String>> parsedArgs;
 
   /**
    * 
@@ -61,7 +56,7 @@ public class DistributedConjugateGradientSolver extends ConjugateGradientSolver 
    * @return               The vector that solves the system.
    */
   public Vector runJob(Path inputPath, 
-                       Path tempPath, 
+                       Path tempPath,
                        int numRows, 
                        int numCols, 
                        Vector b, 
@@ -74,6 +69,15 @@ public class DistributedConjugateGradientSolver extends ConjugateGradientSolver 
     return solve(matrix, b, preconditioner, maxIterations, maxError);
   }
   
+  public int run(Path inputPath, Path vectorPath, Path tempPath, int numRows, int numCols,
+      int maxIterations, double maxError, Path outputPath) throws IOException {
+    Vector b = loadInputVector(vectorPath);
+    Vector x = runJob(inputPath, tempPath, numRows, numCols, b, null, maxIterations, maxError);
+    saveOutputVector(outputPath, x);
+    tempPath.getFileSystem(conf).delete(tempPath, true);
+    return 0;
+  }
+  
   @Override
   public Configuration getConf() {
     return conf;
@@ -84,31 +88,6 @@ public class DistributedConjugateGradientSolver extends ConjugateGradientSolver 
     this.conf = conf;    
   }
 
-  @Override
-  public int run(String[] strings) throws Exception {
-    Path inputPath = new Path(AbstractCLI.getOption(parsedArgs, "--input"));
-    Path outputPath = new Path(AbstractCLI.getOption(parsedArgs, "--output"));
-    Path tempPath = new Path(AbstractCLI.getOption(parsedArgs, "--tempDir"));
-    Path vectorPath = new Path(AbstractCLI.getOption(parsedArgs, "--vector"));
-    int numRows = Integer.parseInt(AbstractCLI.getOption(parsedArgs, "--numRows"));
-    int numCols = Integer.parseInt(AbstractCLI.getOption(parsedArgs, "--numCols"));
-    int maxIterations = parsedArgs.containsKey("--maxIter") ? Integer.parseInt(AbstractCLI.getOption(parsedArgs, "--maxIter")) : numCols;
-    double maxError = parsedArgs.containsKey("--maxError") 
-        ? Double.parseDouble(AbstractCLI.getOption(parsedArgs, "--maxError"))
-        : ConjugateGradientSolver.DEFAULT_MAX_ERROR;
-
-    Vector b = loadInputVector(vectorPath);
-    Vector x = runJob(inputPath, tempPath, numRows, numCols, b, null, maxIterations, maxError);
-    saveOutputVector(outputPath, x);
-    tempPath.getFileSystem(conf).delete(tempPath, true);
-    
-    return 0;
-  }
-  
-  public DistributedConjugateGradientSolverJob job() {
-    return new DistributedConjugateGradientSolverJob();
-  }
-  
   private Vector loadInputVector(Path path) throws IOException {
     FileSystem fs = path.getFileSystem(conf);
     SequenceFile.Reader reader = new SequenceFile.Reader(fs, path, conf);
@@ -134,40 +113,4 @@ public class DistributedConjugateGradientSolver extends ConjugateGradientSolver 
     }
   }
   
-  public class DistributedConjugateGradientSolverJob extends AbstractCLI {
-    @Override
-    public void setConf(Configuration conf) {
-      DistributedConjugateGradientSolver.this.setConf(conf);
-    }
-    
-    @Override
-    public Configuration getConf() {
-      return DistributedConjugateGradientSolver.this.getConf();
-    }
-    
-    @Override
-    public int run(String[] args) throws Exception {
-      addInputOption();
-      addOutputOption();
-      addOption("numRows", "nr", "Number of rows in the input matrix", true);
-      addOption("numCols", "nc", "Number of columns in the input matrix", true);
-      addOption("vector", "b", "Vector to solve against", true);
-      addOption("lambda", "l", "Scalar in A + lambda * I [default = 0]", "0.0");
-      addOption("symmetric", "sym", "Is the input matrix square and symmetric?", "true");
-      addOption("maxIter", "x", "Maximum number of iterations to run");
-      addOption("maxError", "err", "Maximum residual error to allow before stopping");
-
-      DistributedConjugateGradientSolver.this.parsedArgs = parseArguments(args);
-      if (DistributedConjugateGradientSolver.this.parsedArgs == null) {
-        return -1;
-      } else {
-        DistributedConjugateGradientSolver.this.setConf(new Configuration());
-        return DistributedConjugateGradientSolver.this.run(args);
-      }
-    }    
-  }
-
-  public static void main(String[] args) throws Exception {
-    ToolRunner.run(new DistributedConjugateGradientSolver().job(), args);
-  }
 }
