@@ -18,11 +18,11 @@
 package org.apache.mahout.math.decomposer.hebbian;
 
 import org.apache.mahout.math.DenseMatrix;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.Matrix;
 
 import org.apache.mahout.math.decomposer.AsyncEigenVerifier;
-import org.apache.mahout.math.decomposer.SingularVectorVerifier;
-import org.apache.mahout.math.decomposer.SolverTest;
+import org.apache.mahout.math.decomposer.SolverTestHelper;
 import org.junit.Test;
 
 /**
@@ -31,7 +31,7 @@ import org.junit.Test;
  * approaches).
  * TODO: make better.
  */
-public final class TestHebbianSolver extends SolverTest {
+public final class TestHebbianSolver extends MahoutTestCase {
 
   public static long timeSolver(Matrix corpus,
                                 double convergence,
@@ -50,7 +50,7 @@ public final class TestHebbianSolver extends SolverTest {
                                 int desiredRank,
                                 TrainingState state) {
     HebbianUpdater updater = new HebbianUpdater();
-    SingularVectorVerifier verifier = new AsyncEigenVerifier();
+    AsyncEigenVerifier verifier = new AsyncEigenVerifier();
     HebbianSolver solver = new HebbianSolver(updater,
                                              verifier,
                                              convergence,
@@ -63,6 +63,7 @@ public final class TestHebbianSolver extends SolverTest {
     long time = 0L;
     time += System.nanoTime() - start;
     assertEquals(state.getCurrentEigens().numRows(), desiredRank);
+    verifier.close();
     return time / 1000000L;
   }
 
@@ -79,7 +80,7 @@ public final class TestHebbianSolver extends SolverTest {
   @Test
   public void testHebbianSolver() {
     int numColumns = 800;
-    Matrix corpus = randomSequentialAccessSparseMatrix(1000, 900, numColumns, 30, 1.0);
+    Matrix corpus = SolverTestHelper.randomSequentialAccessSparseMatrix(1000, 900, numColumns, 30, 1.0);
     int rank = 50;
     Matrix eigens = new DenseMatrix(rank, numColumns);
     TrainingState state = new TrainingState(eigens, null);
@@ -89,8 +90,8 @@ public final class TestHebbianSolver extends SolverTest {
                                     rank,
                                     state);
     eigens = state.getCurrentEigens();
-    assertEigen(eigens, corpus, 0.05, false);
-    assertOrthonormal(eigens, 1.0e-6);
+    assertTrue(SolverTestHelper.isEigen(eigens, corpus, 0.05, false));
+    assertTrue(SolverTestHelper.isOrthonormal(eigens, 1.0e-6));
     System.out.println("Avg solving (Hebbian) time in ms: " + optimizedTime);
   }
 

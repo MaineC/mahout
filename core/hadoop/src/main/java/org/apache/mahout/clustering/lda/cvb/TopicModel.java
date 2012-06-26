@@ -17,6 +17,7 @@
 package org.apache.mahout.clustering.lda.cvb;
 
 import com.google.common.collect.Lists;
+
 import org.apache.hadoop.conf.Configurable;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -74,6 +75,7 @@ public class TopicModel implements Configurable, Iterable<MatrixSlice> {
   private final double alpha;
 
   private Configuration conf;
+  private ThreadPoolExecutor threadPool;
 
   private final Sampler sampler;
   private final int numThreads;
@@ -152,9 +154,13 @@ public class TopicModel implements Configurable, Iterable<MatrixSlice> {
     return v;
   }
 
-  private void initializeThreadPool() {
-    ThreadPoolExecutor threadPool = new ThreadPoolExecutor(numThreads, numThreads, 0, TimeUnit.SECONDS,
-                                                           new ArrayBlockingQueue<Runnable>(numThreads * 10));
+  private synchronized void initializeThreadPool() {
+    if (threadPool != null) {
+      this.awaitTermination();
+      this.shutdown();
+    }
+    threadPool = new ThreadPoolExecutor(numThreads, numThreads, 0, TimeUnit.SECONDS,
+                                                             new ArrayBlockingQueue<Runnable>(numThreads * 10));
     threadPool.allowCoreThreadTimeOut(false);
     updaters = new Updater[numThreads];
     for (int i = 0; i < numThreads; i++) {
@@ -249,9 +255,17 @@ public class TopicModel implements Configurable, Iterable<MatrixSlice> {
     initializeThreadPool();
   }
 
-  public void awaitTermination() {
+  public synchronized void awaitTermination() {
     for (Updater updater : updaters) {
       updater.shutdown();
+    }
+  }
+  public synchronized void shutdown() {
+    threadPool.shutdown();
+    try {
+      threadPool.awaitTermination(2, TimeUnit.MINUTES);
+    } catch (InterruptedException e) {
+      log.warn("Interrupted waiting for threadpool termination.", e);
     }
   }
 

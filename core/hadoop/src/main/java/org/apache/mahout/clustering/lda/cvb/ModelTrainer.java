@@ -252,7 +252,7 @@ public class ModelTrainer {
       log.error("Interrupted shutting down!", e);
     }
   }
-
+  
   public void persist(Path outputPath) throws IOException {
     readModel.persist(outputPath, true);
   }

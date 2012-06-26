@@ -58,6 +58,8 @@ public class CachingCVB0Mapper
   private static final Logger log = LoggerFactory.getLogger(CachingCVB0Mapper.class);
 
   private ModelTrainer modelTrainer;
+  private TopicModel readModel;
+  private TopicModel writeModel;
   private int maxIters;
   private int numTopics;
   
@@ -88,7 +90,6 @@ public class CachingCVB0Mapper
     float modelWeight = conf.getFloat(CVB0Config.MODEL_WEIGHT, 1.0f);
 
     log.info("Initializing read model");
-    TopicModel readModel;
     Path[] modelPaths = CVB0Config.getModelPaths(conf);
     if (modelPaths != null && modelPaths.length > 0) {
       readModel = new TopicModel(conf, eta, alpha, null, numUpdateThreads, modelWeight, modelPaths);
@@ -99,7 +100,7 @@ public class CachingCVB0Mapper
     }
 
     log.info("Initializing write model");
-    TopicModel writeModel = modelWeight == 1
+    writeModel = modelWeight == 1
         ? new TopicModel(numTopics, numTerms, eta, alpha, null, numUpdateThreads)
         : readModel;
 
@@ -122,9 +123,13 @@ public class CachingCVB0Mapper
     modelTrainer.stop();
 
     log.info("Writing model");
-    TopicModel model = modelTrainer.getReadModel();
-    for (MatrixSlice topic : model) {
+    TopicModel readFrom = modelTrainer.getReadModel();
+    for (MatrixSlice topic : readFrom) {
       context.write(new IntWritable(topic.index()), new VectorWritable(topic.vector()));
     }
+    readModel.awaitTermination();
+    readModel.shutdown();
+    writeModel.awaitTermination();
+    writeModel.shutdown();
   }
 }

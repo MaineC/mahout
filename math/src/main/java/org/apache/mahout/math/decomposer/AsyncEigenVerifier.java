@@ -17,16 +17,19 @@
 
 package org.apache.mahout.math.decomposer;
 
-import java.util.concurrent.Executor;
+import java.io.Closeable;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorIterable;
+import org.jfree.util.Log;
 
 
-public class AsyncEigenVerifier extends SimpleEigenVerifier {
+public class AsyncEigenVerifier extends SimpleEigenVerifier implements Closeable {
 
-  private final Executor threadPool;
+  private final ExecutorService threadPool;
   private EigenStatus status;
   private boolean finished;
   private boolean started;
@@ -34,6 +37,16 @@ public class AsyncEigenVerifier extends SimpleEigenVerifier {
   public AsyncEigenVerifier() {
     threadPool = Executors.newFixedThreadPool(1);
     status = new EigenStatus(-1, 0);
+  }
+
+  @Override
+  public void close() {
+    this.threadPool.shutdown();
+    try {
+      this.threadPool.awaitTermination(10, TimeUnit.MILLISECONDS);
+    } catch (InterruptedException e) {
+      Log.error("Could not shut down AsyncEigenVerifier thread pool.");
+    }
   }
 
   @Override

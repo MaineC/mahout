@@ -17,16 +17,17 @@
 
 package org.apache.mahout.math.decomposer.lanczos;
 
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Matrix;
 import org.apache.mahout.math.Vector;
-import org.apache.mahout.math.decomposer.SolverTest;
+import org.apache.mahout.math.decomposer.SolverTestHelper;
 import org.apache.mahout.math.solver.EigenDecomposition;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class TestLanczosSolver extends SolverTest {
+public final class TestLanczosSolver extends MahoutTestCase {
   private static final Logger log = LoggerFactory.getLogger(TestLanczosSolver.class);
 
   private static final double ERROR_TOLERANCE = 0.05;
@@ -34,7 +35,7 @@ public final class TestLanczosSolver extends SolverTest {
   @Test
   public void testEigenvalueCheck() throws Exception {
     int size = 100;
-    Matrix m = randomHierarchicalSymmetricMatrix(size);
+    Matrix m = SolverTestHelper.randomHierarchicalSymmetricMatrix(size);
 
     Vector initialVector = new DenseVector(size);
     initialVector.assign(1.0 / Math.sqrt(size));
@@ -66,16 +67,16 @@ public final class TestLanczosSolver extends SolverTest {
   public void testLanczosSolver() throws Exception {
     int numRows = 800;
     int numColumns = 500;
-    Matrix corpus = randomHierarchicalMatrix(numRows, numColumns, false);
+    Matrix corpus = SolverTestHelper.randomHierarchicalMatrix(numRows, numColumns, false);
     Vector initialVector = new DenseVector(numColumns);
     initialVector.assign(1.0 / Math.sqrt(numColumns));
     int rank = 50;
     LanczosState state = new LanczosState(corpus, rank, initialVector);
     long time = timeLanczos(corpus, state, rank, false);
     assertTrue("Lanczos taking too long!  Are you in the debugger? :)", time < 10000);
-    assertOrthonormal(state);
+    assertTrue(SolverTestHelper.isOrthonormal(state));
     for (int i = 0; i < rank/2; i++) {
-      assertEigen(i, state.getRightSingularVector(i), corpus, ERROR_TOLERANCE, false);
+      assertTrue(SolverTestHelper.isEigen(i, state.getRightSingularVector(i), corpus, ERROR_TOLERANCE, false));
     }
     //assertEigen(eigens, corpus, rank / 2, ERROR_TOLERANCE, false);
   }
@@ -83,7 +84,7 @@ public final class TestLanczosSolver extends SolverTest {
   @Test
   public void testLanczosSolverSymmetric() throws Exception {
     int numCols = 500;
-    Matrix corpus = randomHierarchicalSymmetricMatrix(numCols);
+    Matrix corpus = SolverTestHelper.randomHierarchicalSymmetricMatrix(numCols);
     Vector initialVector = new DenseVector(numCols);
     initialVector.assign(1.0 / Math.sqrt(numCols));
     int rank = 30;
