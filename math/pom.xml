@@ -73,21 +73,6 @@
           </execution>
         </executions>
       </plugin>
-
-      <!-- create test jar so other modules can reuse the math test utility classes. -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-            <phase>package</phase>
-          </execution>
-        </executions>
-      </plugin>
-
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
       </plugin>
@@ -113,6 +98,16 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.apache.mahout</groupId>
+      <artifactId>mahout-test-utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.mahout</groupId>
+      <artifactId>mahout-random</artifactId>
+    </dependency>
+
+
 
     <!--  3rd-party -->
     <dependency>

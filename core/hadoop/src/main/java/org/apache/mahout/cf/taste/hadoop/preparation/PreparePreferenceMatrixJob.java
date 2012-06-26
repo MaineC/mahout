@@ -1,0 +1,94 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.mahout.cf.taste.hadoop.preparation;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.mahout.cf.taste.hadoop.EntityPrefWritable;
+import org.apache.mahout.cf.taste.hadoop.ToEntityPrefsMapper;
+import org.apache.mahout.cf.taste.hadoop.ToItemPrefsMapper;
+import org.apache.mahout.cf.taste.hadoop.item.ItemIDIndexMapper;
+import org.apache.mahout.cf.taste.hadoop.item.ItemIDIndexReducer;
+import org.apache.mahout.cf.taste.hadoop.item.RecommenderConfig;
+import org.apache.mahout.cf.taste.hadoop.item.ToUserVectorsReducer;
+import org.apache.mahout.common.HadoopUtil;
+import org.apache.mahout.common.mapreduce.AbstractJob;
+import org.apache.mahout.math.VarIntWritable;
+import org.apache.mahout.math.VarLongWritable;
+import org.apache.mahout.math.VectorWritable;
+
+import java.io.IOException;
+
+public class PreparePreferenceMatrixJob extends AbstractJob {
+
+  public static final String NUM_USERS = "numUsers.bin";
+  public static final String ITEMID_INDEX = "itemIDIndex";
+  public static final String USER_VECTORS = "userVectors";
+  public static final String RATING_MATRIX = "ratingMatrix";
+
+  protected static final int DEFAULT_MIN_PREFS_PER_USER = 1;
+
+  public int run(Path inputPath, Path baseOutputPath, Integer samplingSize, int minPrefsPerUser,
+      float ratingShift, boolean booleanData) throws IOException, InterruptedException, ClassNotFoundException {
+
+    //convert items to an internal index
+    Job itemIDIndex = prepareJob(inputPath, new Path(baseOutputPath, ITEMID_INDEX), TextInputFormat.class,
+            ItemIDIndexMapper.class, VarIntWritable.class, VarLongWritable.class, ItemIDIndexReducer.class,
+            VarIntWritable.class, VarLongWritable.class, SequenceFileOutputFormat.class);
+    itemIDIndex.setCombinerClass(ItemIDIndexReducer.class);
+    boolean succeeded = itemIDIndex.waitForCompletion(true);
+    if (!succeeded) {
+      return -1;
+    }
+    //convert user preferences into a vector per user
+    Job toUserVectors = prepareJob(inputPath, new Path(baseOutputPath, USER_VECTORS), TextInputFormat.class,
+            ToItemPrefsMapper.class, VarLongWritable.class, booleanData ? VarLongWritable.class : EntityPrefWritable.class,
+            ToUserVectorsReducer.class, VarLongWritable.class, VectorWritable.class, SequenceFileOutputFormat.class);
+    toUserVectors.getConfiguration().setBoolean(RecommenderConfig.BOOLEAN_DATA, booleanData);
+    toUserVectors.getConfiguration().setInt(ToUserVectorsReducer.MIN_PREFERENCES_PER_USER, minPrefsPerUser);
+    toUserVectors.getConfiguration().set(ToEntityPrefsMapper.RATING_SHIFT, String.valueOf(ratingShift));
+    succeeded = toUserVectors.waitForCompletion(true);
+    if (!succeeded) {
+      return -1;
+    }
+    //we need the number of users later
+    int numberOfUsers = (int) toUserVectors.getCounters().findCounter(ToUserVectorsReducer.Counters.USERS).getValue();
+
+    HadoopUtil.writeInt(numberOfUsers, new Path(baseOutputPath, NUM_USERS), getConf());
+    //build the rating matrix
+    Job toItemVectors = prepareJob(new Path(baseOutputPath, USER_VECTORS), new Path(baseOutputPath, RATING_MATRIX),
+            ToItemVectorsMapper.class, IntWritable.class, VectorWritable.class, ToItemVectorsReducer.class,
+            IntWritable.class, VectorWritable.class);
+    toItemVectors.setCombinerClass(ToItemVectorsReducer.class);
+
+    /* configure sampling regarding the uservectors */
+    if (samplingSize != null) {
+      toItemVectors.getConfiguration().setInt(ToItemVectorsMapper.SAMPLE_SIZE, samplingSize);
+    }
+
+    succeeded = toItemVectors.waitForCompletion(true);
+    if (!succeeded) {
+      return -1;
+    }
+
+    return 0;
+  }
+}

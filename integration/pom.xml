@@ -103,21 +103,12 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-core</artifactId>
-      <type>test-jar</type>
-      <scope>test</scope>
+      <artifactId>mahout-test-utils</artifactId>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>mahout-math</artifactId>
     </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-math</artifactId>
-      <type>test-jar</type>
-      <scope>test</scope>
-    </dependency>
-
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>mahout-core</artifactId>

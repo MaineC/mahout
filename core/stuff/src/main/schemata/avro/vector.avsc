@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "Vector",
+  "namespace": "org.apache.mahout.avro",
+  "fields": [ 
+	{ "name": "content", "namespace": "org.apache.mahout.avro", "type": { "type": "array", "items": "double"}  }
+  ]
+}

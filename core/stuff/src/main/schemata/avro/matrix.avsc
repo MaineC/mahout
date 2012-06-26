@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "name": "Matrix",
+  "namespace": "org.apache.mahout.avro",
+  "fields": [
+	{"name": "rowLabelBindings", "namespace": "org.apache.mahout.avro", "type": {"type": "array", "items": "string"}},
+	{"name": "colLabelBindings", "namespace": "org.apache.mahout.avro", "type": {"type": "array", "items": "string"}},
+	{"name": "content", "namespace": "org.apache.mahout.avro", "type": {"type": "array", "items": {"type": "array", "items": "double"}}}		
+  ]
+}
