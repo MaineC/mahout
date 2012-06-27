@@ -52,31 +52,14 @@ public final class TestDistributedLanczosSolverCLI extends MahoutTestCase {
     Path output = getTestTempDirPath("output");
     Path tmp = getTestTempDirPath("tmp");
     Path workingDir = getTestTempDirPath("working");
-    String[] args = {
-        "-i", new Path(testData, "distMatrix").toString(),
-        "-o", output.toString(),
-        "--tempDir", tmp.toString(),
-        "--numRows", "10",
-        "--numCols", "9",
-        "--rank", "6",
-        "--symmetric", "false",
-        "--workingDir", workingDir.toString()
-    };
-    new DistributedLanczosSolverCLI().run(args);
+    new DistributedLanczosSolver().run(new Path(testData, "distMatrix"), output, tmp, workingDir,
+        10, 9, false, 6);
 
     output = getTestTempDirPath("output2");
     tmp = getTestTempDirPath("tmp2");
-    args = new String[] {
-        "-i", new Path(testData, "distMatrix").toString(),
-        "-o", output.toString(),
-        "--tempDir", tmp.toString(),
-        "--numRows", "10",
-        "--numCols", "9",
-        "--rank", "7",
-        "--symmetric", "false",
-        "--workingDir", workingDir.toString()
-    };
-    new DistributedLanczosSolverCLI().run(args);
+//        "--symmetric", "false",
+    new DistributedLanczosSolver().run(new Path(testData, "distMatrix"), output, tmp, workingDir,
+        10, 9, false, 7);
 
     Path rawEigenvectors = new Path(output, DistributedLanczosSolver.RAW_EIGENVECTORS);
     Matrix eigenVectors = new DenseMatrix(7, corpus.numCols());
@@ -99,17 +82,8 @@ public final class TestDistributedLanczosSolverCLI extends MahoutTestCase {
     corpus.setConf(new Configuration());
     Path output = getTestTempDirPath("output");
     Path tmp = getTestTempDirPath("tmp");
-    String[] args = {
-        "-i", new Path(testData, "distMatrix").toString(),
-        "-o", output.toString(),
-        "--tempDir", tmp.toString(),
-        "--numRows", "10",
-        "--numCols", "9",
-        "--rank", "6",
-        "--symmetric", "false",
-        "--cleansvd", "true"
-    };
-    new DistributedLanczosSolverCLI().run(args);
+    new DistributedLanczosSolver().runClean(new Path(testData, "distMatrix"), output, tmp, null,
+        10, 9, false, 6);
   
     Path cleanEigenvectors = new Path(output, EigenVerificationJob.CLEAN_EIGENVECTORS);
     Matrix eigenVectors = new DenseMatrix(6, corpus.numCols());
@@ -117,17 +91,8 @@ public final class TestDistributedLanczosSolverCLI extends MahoutTestCase {
 
     output = getTestTempDirPath("output2");
     tmp = getTestTempDirPath("tmp2");
-    args = new String[] {
-        "-i", new Path(testData, "distMatrix").toString(),
-        "-o", output.toString(),
-        "--tempDir", tmp.toString(),
-        "--numRows", "10",
-        "--numCols", "9",
-        "--rank", "7",
-        "--symmetric", "false",
-        "--cleansvd", "true"
-    };
-    new DistributedLanczosSolverCLI().run(args);
+    new DistributedLanczosSolver().runClean(new Path(testData, "distMatrix"), output, tmp, 
+        null, 10, 9, false, 7);
     Path cleanEigenvectors2 = new Path(output, EigenVerificationJob.CLEAN_EIGENVECTORS);
     Matrix eigenVectors2 = new DenseMatrix(7, corpus.numCols());
     Configuration conf = new Configuration();

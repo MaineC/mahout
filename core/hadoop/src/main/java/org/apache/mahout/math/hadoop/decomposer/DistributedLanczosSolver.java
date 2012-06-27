@@ -48,8 +48,6 @@ public class DistributedLanczosSolver extends LanczosSolver implements Configura
 
   private Configuration conf;
 
-  private Map<String, List<String>> parsedArgs;
-
   /**
    * For the distributed case, the best guess at a useful initialization state for Lanczos we'll chose to be
    * uniform over all input dimensions, L_2 normalized.
@@ -89,6 +87,29 @@ public class DistributedLanczosSolver extends LanczosSolver implements Configura
     return runJob(originalConfig, state, desiredRank, isSymmetric, outputEigenVectorPathString);
   }
 
+  public int runClean(Path input, Path output, Path tmp, Path workingDir, int numRows,
+      int numCols, boolean isSymmetric, int desiredRank) throws Exception {
+    return runClean(input, output, tmp, workingDir, numRows, numCols, isSymmetric, desiredRank,
+        0.05, 0.0, false);
+  }
+
+
+  public int runClean(Path inputPath, Path outputPath, Path outputTmpPath, Path workingDirPath,
+      int numRows, int numCols, boolean isSymmetric, int desiredRank, double maxError,
+      double minEigenvalue, boolean inMemory) throws Exception {
+    run(inputPath,
+                   outputPath,
+                   outputTmpPath,
+                   workingDirPath,
+                   numRows,
+                   numCols,
+                   isSymmetric,
+                   desiredRank,
+                   maxError,
+                   minEigenvalue,
+                   inMemory);
+    return run(inputPath, outputPath, outputTmpPath, workingDirPath, numRows, numCols, isSymmetric, desiredRank);
+  }
 
   /**
    * Run the solver to produce raw eigenvectors, then run the EigenVerificationJob to clean them

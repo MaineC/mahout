@@ -45,7 +45,7 @@ public class DistributedLanczosSolverCLI extends AbstractCLI {
         double maxError = Double.parseDouble(AbstractCLI.getOption(parsedArgs, "--maxError"));
         double minEigenvalue = Double.parseDouble(AbstractCLI.getOption(parsedArgs, "--minEigenvalue"));
         boolean inMemory = Boolean.parseBoolean(AbstractCLI.getOption(parsedArgs, "--inMemory"));
-        return (new DistributedLanczosSolver()).run(inputPath,
+        return (new DistributedLanczosSolver()).runClean(inputPath,
                    outputPath,
                    outputTmpPath,
                    workingDirPath,
