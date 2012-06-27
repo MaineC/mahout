@@ -88,18 +88,9 @@ public final class TestDistributedConjugateGradientSolverCLI extends MahoutTestC
     Vector vector = randomVector(matrix.numCols(), 10.0);
     saveVector(conf, vectorPath, vector);
         
-    String[] args = {
-        "-i", matrix.getRowPath().toString(),
-        "-o", output.toString(),
-        "--tempDir", tempPath.toString(),
-        "--vector", vectorPath.toString(),
-        "--numRows", "10",
-        "--numCols", "10",
-        "--symmetric", "true"        
-    };
-    
     DistributedConjugateGradientSolver solver = new DistributedConjugateGradientSolver();
-    solver.job().run(args);
+    solver.setConf(conf);
+    solver.run(matrix.getRowPath(), vectorPath, tempPath, 10, 10, output);
     
     Vector x = loadVector(conf, output);
     

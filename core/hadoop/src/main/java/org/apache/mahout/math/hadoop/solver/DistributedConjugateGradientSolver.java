@@ -68,7 +68,10 @@ public class DistributedConjugateGradientSolver extends ConjugateGradientSolver 
         
     return solve(matrix, b, preconditioner, maxIterations, maxError);
   }
-  
+  public int run(Path inputPath, Path vectorPath, Path tempPath, int numRows, int numCols,
+      Path outputPath) throws IOException {
+    return run(inputPath, vectorPath, tempPath, numRows, numCols, numCols, DEFAULT_MAX_ERROR, outputPath);
+  }
   public int run(Path inputPath, Path vectorPath, Path tempPath, int numRows, int numCols,
       int maxIterations, double maxError, Path outputPath) throws IOException {
     Vector b = loadInputVector(vectorPath);
