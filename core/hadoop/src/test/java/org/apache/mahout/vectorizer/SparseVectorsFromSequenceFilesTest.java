@@ -18,8 +18,6 @@
 package org.apache.mahout.vectorizer;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 import com.carrotsearch.randomizedtesting.annotations.Nightly;
 
@@ -29,6 +27,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
+import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.iterator.sequencefile.PathFilters;
 import org.apache.mahout.common.iterator.sequencefile.PathType;
@@ -166,32 +165,18 @@ public class SparseVectorsFromSequenceFilesTest extends MahoutTestCase {
 
   private Path runTest(boolean tfWeighting, boolean sequential, boolean named, double maxDFSigma, int numDocs) throws Exception {
     Path outputPath = getTestTempFilePath("output");
-
+    HadoopUtil.delete(conf, outputPath);
     
-    List<String> argList = new LinkedList<String>();
-    argList.add("-i");
-    argList.add(inputPath.toString());
-    argList.add("-o");
-    argList.add(outputPath.toString());
-    
-    if (sequential) {
-      argList.add("-seq");
-    }
-    
-    if (named) {
-      argList.add("-nv");
-    }
+    VectorizerJobConfig config = new VectorizerJobConfig();
+    config.setSequentialAccessOutput(sequential);
+    config.setNamedVectors(named);
     if (maxDFSigma >= 0) {
-      argList.add("--maxDFSigma");
-      argList.add(String.valueOf(maxDFSigma));
+      config.setMaxDFSigma(maxDFSigma);
     }
-    if (tfWeighting) {
-      argList.add("--weight");
-      argList.add("tf");
-    }
-    String[] args = argList.toArray(new String[argList.size()]);
-    
-    SparseVectorsFromSequenceFiles.main(args);
+    config.setProcessIdf(! tfWeighting);
+    SparseVectorsFromSequenceFiles job = new SparseVectorsFromSequenceFiles();
+    job.setConf(conf);
+    job.run(inputPath, outputPath, config);
 
     Path tfVectors = new Path(outputPath, "tf-vectors");
     Path tfidfVectors = new Path(outputPath, "tfidf-vectors");

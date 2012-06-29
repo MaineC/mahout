@@ -44,8 +44,7 @@ import org.junit.Test;
 
 /**
  * Test the dictionary Vector
-
-@Nightly*/
+ */
 public final class DictionaryVectorizerTest extends MahoutTestCase {
 
   private static final int NUM_DOCS = 100;

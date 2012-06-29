@@ -19,7 +19,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import com.carrotsearch.randomizedtesting.annotations.Nightly;
@@ -92,25 +91,16 @@ public class HighDFWordsPrunerTest extends MahoutTestCase {
   private void runTest(boolean prune) throws Exception {
     Path outputPath = getTestTempFilePath("output");
 
-    List<String> argList = new LinkedList<String>();
-    argList.add("-i");
-    argList.add(inputPath.toString());
-    argList.add("-o");
-    argList.add(outputPath.toString());
+    SparseVectorsFromSequenceFiles job = new SparseVectorsFromSequenceFiles();
+    VectorizerJobConfig config = new VectorizerJobConfig();
     if (prune) {
-      argList.add("-xs");
-      argList.add("3"); // we prune all words that are outside 3*sigma
+      config.setMaxDFSigma(3);
     } else {
-      argList.add("--maxDFPercent");
-      argList.add("100"); // the default if, -xs is not specified is to use maxDFPercent, which defaults to 99%
+      config.setMaxDFPercent(100);
     }
-
-    argList.add("-seq");
-    argList.add("-nv");
-
-    String[] args = argList.toArray(new String[argList.size()]);
-
-    SparseVectorsFromSequenceFiles.main(args);
+    config.setSequentialAccessOutput(true);
+    config.setNamedVectors(true);
+    job.run(inputPath, outputPath, config);
 
     Path dictionary = new Path(outputPath, "dictionary.file-0");
     Path tfVectors = new Path(outputPath, "tf-vectors");
