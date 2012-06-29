@@ -29,6 +29,7 @@ import org.junit.Before;
 /**
  * Superclass of all Mahout test cases.
  */
+
 public abstract class MahoutTestCase extends Assert {
 
   /** "Close enough" value for floating-point comparisons. */

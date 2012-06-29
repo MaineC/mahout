@@ -25,6 +25,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
+import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.Pair;
 import org.apache.mahout.common.iterator.sequencefile.PathFilters;
@@ -35,9 +36,6 @@ import org.apache.mahout.math.SequentialAccessSparseVector;
 import org.apache.mahout.math.VectorWritable;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.LinkedList;
-import java.util.List;
 
 @Nightly
 public class EncodedVectorsFromSequenceFilesTest extends MahoutTestCase {
@@ -93,24 +91,13 @@ public class EncodedVectorsFromSequenceFilesTest extends MahoutTestCase {
   private void runTest(boolean sequential, boolean named) throws Exception {
     Path tmpPath = getTestTempDirPath();
     Path outputPath = new Path(tmpPath, "output");
+    HadoopUtil.delete(conf, outputPath);
     
-    List<String> argList = new LinkedList<String>();
-    argList.add("-i");
-    argList.add(inputPath.toString());
-    argList.add("-o");
-    argList.add(outputPath.toString());
+    EncodedVectorsFromSequenceFiles job = new EncodedVectorsFromSequenceFiles();
+    job.setTempPath(getTestTempDirPath());
+    job.setConf(conf);
+    job.run(inputPath, outputPath, sequential, named);
     
-    if (sequential) {
-      argList.add("-seq");
-    }
-    
-    if (named) {
-      argList.add("-nv");
-    }
-    
-    String[] args = argList.toArray(new String[argList.size()]);
-
-    EncodedVectorsFromSequenceFiles.main(args);
 
     SequenceFileDirIterator<Text, VectorWritable> iter = new SequenceFileDirIterator<Text, VectorWritable>(outputPath, PathType.LIST, PathFilters.partFilter(), null, true, conf);
     int seen = 0;

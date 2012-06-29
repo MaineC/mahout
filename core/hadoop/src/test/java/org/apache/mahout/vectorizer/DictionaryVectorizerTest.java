@@ -20,6 +20,7 @@ package org.apache.mahout.vectorizer;
 import java.io.IOException;
 import java.util.List;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -45,6 +46,7 @@ import org.junit.Test;
 /**
  * Test the dictionary Vector
  */
+@Nightly
 public final class DictionaryVectorizerTest extends MahoutTestCase {
 
   private static final int NUM_DOCS = 100;

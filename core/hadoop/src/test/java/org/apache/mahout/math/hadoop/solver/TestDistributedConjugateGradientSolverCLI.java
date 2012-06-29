@@ -35,6 +35,9 @@ import org.apache.mahout.math.hadoop.DistributedRowMatrix;
 import org.apache.mahout.math.hadoop.TestDistributedRowMatrix;
 import org.junit.Test;
 
+import com.carrotsearch.randomizedtesting.annotations.Nightly;
+
+@Nightly
 public final class TestDistributedConjugateGradientSolverCLI extends MahoutTestCase {
 
   private static Vector randomVector(int size, double entryMean) {
