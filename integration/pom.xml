@@ -99,10 +99,6 @@
     <!-- own modules -->
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
       <artifactId>mahout-test-utils</artifactId>
     </dependency>
     <dependency>
@@ -111,7 +107,7 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-core</artifactId>
+      <artifactId>mahout-cli</artifactId>
     </dependency>
 
       <!-- 3rd party -->

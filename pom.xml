@@ -133,7 +133,17 @@
         <groupId>${project.groupId}</groupId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <artifactId>mahout-hadoop</artifactId>
+        <groupId>${project.groupId}</groupId>
+        <version>${project.version}</version>
+      </dependency>
      <dependency>
+        <artifactId>mahout-cli</artifactId>
+        <groupId>${project.groupId}</groupId>
+        <version>${project.version}</version>
+      </dependency>
+    <dependency>
         <artifactId>mahout-write</artifactId>
         <groupId>${project.groupId}</groupId>
         <version>${project.version}</version>

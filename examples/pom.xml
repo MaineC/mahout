@@ -110,11 +110,7 @@
   <dependencies>
   
     <!-- our modules -->
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-core</artifactId>
-    </dependency>
-    <dependency>
+     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>mahout-test-utils</artifactId>
     </dependency>
