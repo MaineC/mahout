@@ -28,7 +28,7 @@ import java.util.Map;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.iterator.sequencefile.SequenceFileValueIterator;
 import org.apache.mahout.math.Matrix;
 import org.apache.mahout.math.MatrixWritable;
@@ -43,7 +43,7 @@ import org.apache.mahout.math.MatrixWritable;
  *     Options for row and column headers- stats software can be picky.
  * Assumes only one matrix in a file.
  */
-public final class MatrixDumper extends AbstractJob {
+public final class MatrixDumper extends AbstractCLI {
   
   private MatrixDumper() { }
   

@@ -240,7 +240,7 @@ public final class TestClusterDumper extends MahoutTestCase {
     IKernelProfile kernelProfile = new TriangularKernelProfile();
     Path output = getTestTempDirPath("output");
     Configuration conf = new Configuration();
-    MeanShiftCanopyDriver.run(conf, getTestTempDirPath("testdata"), output,
+    (new MeanShiftCanopyDriver()).run(conf, getTestTempDirPath("testdata"), output,
         measure, kernelProfile, 0.5, 0.01, 0.05, 10, false, true, true);
     // run ClusterDumper
     ClusterDumper clusterDumper = new ClusterDumper(finalClusterPath(conf,
@@ -257,7 +257,7 @@ public final class TestClusterDumper extends MahoutTestCase {
         RandomAccessSparseVector.class.getName(), null, prototype.getDelegate()
             .size());
     Configuration conf = new Configuration();
-    DirichletDriver.run(conf, getTestTempDirPath("testdata"), output,
+    (new DirichletDriver()).run(conf, getTestTempDirPath("testdata"), output,
         description, 15, 10, 1.0, true, true, 0, true);
     // run ClusterDumper
     ClusterDumper clusterDumper = new ClusterDumper(finalClusterPath(conf,
@@ -275,7 +275,7 @@ public final class TestClusterDumper extends MahoutTestCase {
         ManhattanDistanceMeasure.class.getName(), prototype.getDelegate()
             .size());
     Configuration conf = new Configuration();
-    DirichletDriver.run(conf, getTestTempDirPath("testdata"), output,
+    (new DirichletDriver()).run(conf, getTestTempDirPath("testdata"), output,
         description, 15, 10, 1.0, true, true, 0, true);
     // run ClusterDumper
     ClusterDumper clusterDumper = new ClusterDumper(finalClusterPath(conf,

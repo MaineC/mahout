@@ -109,7 +109,7 @@ public class DisplayMeanShift extends DisplayClustering {
     writeSampleData(samples);
     // boolean b = true;
     // if (b) {
-    MeanShiftCanopyDriver.run(conf, samples, output, measure, kernelProfile,
+    (new MeanShiftCanopyDriver()).run(conf, samples, output, measure, kernelProfile,
         t1, t2, 0.005, 20, false, true, true);
     loadClustersWritable(output);
     // } else {

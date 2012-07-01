@@ -25,7 +25,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.clustering.conversion.meanshift.InputDriver;
 import org.apache.mahout.clustering.meanshift.MeanShiftCanopyDriver;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.ClassUtils;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
@@ -37,7 +37,7 @@ import org.apache.mahout.utils.clustering.ClusterDumper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class Job extends AbstractJob {
+public final class Job extends AbstractCLI {
   
   private static final Logger log = LoggerFactory.getLogger(Job.class);
   
@@ -137,7 +137,7 @@ public final class Job extends AbstractJob {
     Path directoryContainingConvertedInput = new Path(output,
         DIRECTORY_CONTAINING_CONVERTED_INPUT);
     InputDriver.runJob(input, directoryContainingConvertedInput);
-    MeanShiftCanopyDriver.run(conf, directoryContainingConvertedInput, output,
+    (new MeanShiftCanopyDriver()).run(conf, directoryContainingConvertedInput, output,
         measure, kernelProfile, t1, t2, convergenceDelta, maxIterations, true,
         true, false);
     // run ClusterDumper

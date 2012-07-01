@@ -100,7 +100,7 @@ public class DisplayDirichlet extends DisplayClustering {
     DistributionDescription description = new DistributionDescription(modelDist.getClass().getName(),
         RandomAccessSparseVector.class.getName(), ManhattanDistanceMeasure.class.getName(), 2);
     
-    DirichletDriver.run(new Configuration(), input, output, description, numClusters, numIterations, alpha0, true,
+    (new DirichletDriver()).run(new Configuration(), input, output, description, numClusters, numIterations, alpha0, true,
         true, 0, false);
   }
   

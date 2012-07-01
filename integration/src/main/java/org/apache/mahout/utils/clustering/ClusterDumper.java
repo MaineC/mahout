@@ -35,7 +35,7 @@ import org.apache.mahout.clustering.classify.WeightedVectorWritable;
 import org.apache.mahout.clustering.evaluation.ClusterEvaluator;
 import org.apache.mahout.clustering.evaluation.RepresentativePointsDriver;
 import org.apache.mahout.clustering.iterator.ClusterWritable;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.ClassUtils;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.Pair;
@@ -54,7 +54,7 @@ import com.google.common.collect.Lists;
 import com.google.common.io.Closeables;
 import com.google.common.io.Files;
 
-public final class ClusterDumper extends AbstractJob {
+public final class ClusterDumper extends AbstractCLI {
 
   public static final String SAMPLE_POINTS = "samplePoints";
   protected DistanceMeasure measure;

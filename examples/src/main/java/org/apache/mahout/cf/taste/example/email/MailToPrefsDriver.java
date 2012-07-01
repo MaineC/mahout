@@ -36,7 +36,7 @@ import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.Pair;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
@@ -65,7 +65,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p/>
  * It also outputs a side table mapping the row ids to their original and the message ids to the message thread id
  */
-public final class MailToPrefsDriver extends AbstractJob {
+public final class MailToPrefsDriver extends AbstractCLI {
 
   private static final Logger log = LoggerFactory.getLogger(MailToPrefsDriver.class);
 

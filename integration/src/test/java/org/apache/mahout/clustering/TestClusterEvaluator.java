@@ -390,7 +390,7 @@ public final class TestClusterEvaluator extends MahoutTestCase {
     DistanceMeasure measure = new EuclideanDistanceMeasure();
     IKernelProfile kernelProfile = new TriangularKernelProfile();
     Configuration conf = new Configuration();
-    MeanShiftCanopyDriver.run(conf, testdata, output, measure, kernelProfile,
+    (new MeanShiftCanopyDriver()).run(conf, testdata, output, measure, kernelProfile,
         2.1, 1.0, 0.001, 10, false, true, true);
     int numIterations = 10;
     Path clustersIn = new Path(output, "clusters-7-final");
@@ -412,7 +412,7 @@ public final class TestClusterEvaluator extends MahoutTestCase {
     DistributionDescription description = new DistributionDescription(
         GaussianClusterDistribution.class.getName(),
         DenseVector.class.getName(), null, 2);
-    DirichletDriver.run(new Configuration(), testdata, output, description, 15, 5, 1.0, true,
+    (new DirichletDriver()).run(new Configuration(), testdata, output, description, 15, 5, 1.0, true,
     true, (double) 0, true);
     int numIterations = 10;
     Configuration conf = new Configuration();

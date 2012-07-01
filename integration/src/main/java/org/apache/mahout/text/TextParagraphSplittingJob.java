@@ -26,11 +26,11 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 
 import java.io.IOException;
 
-public class TextParagraphSplittingJob extends AbstractJob {
+public class TextParagraphSplittingJob extends AbstractCLI {
 
   @Override
   public int run(String[] strings) throws Exception {

@@ -28,7 +28,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.CommandLineUtil;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.Pair;
@@ -107,7 +107,7 @@ import java.util.BitSet;
  * that the desired test set size is allocated. Split location has no effect is
  * random sampling is employed.
  */
-public class SplitInput extends AbstractJob {
+public class SplitInput extends AbstractCLI {
 
   private static final Logger log = LoggerFactory.getLogger(SplitInput.class);
 

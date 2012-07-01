@@ -28,7 +28,7 @@ import org.apache.hadoop.fs.FileUtil;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.mapred.Utils.OutputFileUtils.OutputFilesFilter;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.Pair;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
 import org.apache.mahout.common.iterator.sequencefile.SequenceFileIterator;
@@ -41,7 +41,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class SequenceFileDumper extends AbstractJob {
+public final class SequenceFileDumper extends AbstractCLI {
 
   public SequenceFileDumper() {
     setConf(new Configuration());

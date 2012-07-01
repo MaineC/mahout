@@ -24,7 +24,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
 import org.apache.mahout.math.VectorWritable;
@@ -37,7 +37,7 @@ import java.util.Map;
  * {@link org.apache.mahout.vectorizer.SparseVectorsFromSequenceFiles} to ones consumable by the classifiers.  We do this
  * here b/c if it is done in the creation of sparse vectors, the Reducer collapses all the vectors.
  */
-public class PrepEmailVectorsDriver extends AbstractJob {
+public class PrepEmailVectorsDriver extends AbstractCLI {
 
   public static final String ITEMS_PER_CLASS = "itemsPerClass";
   public static final String USE_LIST_NAME = "USE_LIST_NAME";

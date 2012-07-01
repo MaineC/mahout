@@ -28,7 +28,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
 import org.apache.mahout.utils.io.ChunkedWriter;
@@ -40,7 +40,7 @@ import org.apache.mahout.utils.io.ChunkedWriter;
  * parent directory prepended with a specified prefix. You can also specify the input encoding of the text
  * files. The content of the output SequenceFiles are encoded as UTF-8 text.
  */
-public class SequenceFilesFromDirectory extends AbstractJob {
+public class SequenceFilesFromDirectory extends AbstractCLI {
 
   private static final String PREFIX_ADDITION_FILTER = PrefixAdditionFilter.class.getName();
   

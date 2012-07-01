@@ -26,10 +26,11 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.clustering.conversion.InputDriver;
+import org.apache.mahout.clustering.dirichlet.DirichletCLI;
 import org.apache.mahout.clustering.dirichlet.DirichletDriver;
 import org.apache.mahout.clustering.dirichlet.models.DistributionDescription;
 import org.apache.mahout.clustering.dirichlet.models.GaussianClusterDistribution;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
 import org.apache.mahout.math.RandomAccessSparseVector;
@@ -37,7 +38,7 @@ import org.apache.mahout.utils.clustering.ClusterDumper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class Job extends AbstractJob {
+public final class Job extends AbstractCLI {
 
   private static final Logger log = LoggerFactory.getLogger(Job.class);
 
@@ -139,7 +140,8 @@ public final class Job extends AbstractJob {
           throws Exception{
     Path directoryContainingConvertedInput = new Path(output, DIRECTORY_CONTAINING_CONVERTED_INPUT);
     InputDriver.runJob(input, directoryContainingConvertedInput, "org.apache.mahout.math.RandomAccessSparseVector");
-    DirichletDriver.run(new Configuration(), directoryContainingConvertedInput, output, description, numModels, maxIterations, alpha0, true,
+    DirichletDriver driver = new DirichletDriver();
+    driver.run(new Configuration(), directoryContainingConvertedInput, output, description, numModels, maxIterations, alpha0, true,
     emitMostLikely, threshold, false);
     // run ClusterDumper
     ClusterDumper clusterDumper =

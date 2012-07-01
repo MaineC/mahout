@@ -33,7 +33,7 @@ import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.mapred.Utils.OutputFileUtils.OutputFilesFilter;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.clustering.classify.WeightedPropertyVectorWritable;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.Pair;
 import org.apache.mahout.common.iterator.sequencefile.SequenceFileIterable;
 import org.apache.mahout.math.NamedVector;
@@ -55,7 +55,7 @@ import java.util.Set;
  * out the results using {@link Vector#asFormatString()} to either the console or to a
  * file.
  */
-public final class VectorDumper extends AbstractJob {
+public final class VectorDumper extends AbstractCLI {
 
   private static final Logger log = LoggerFactory.getLogger(VectorDumper.class);
 

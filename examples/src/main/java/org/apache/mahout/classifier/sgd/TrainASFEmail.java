@@ -25,7 +25,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.fs.PathFilter;
 import org.apache.hadoop.io.Text;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.Pair;
 
 import org.apache.mahout.common.iterator.sequencefile.PathType;
@@ -39,7 +39,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public final class TrainASFEmail extends AbstractJob {
+public final class TrainASFEmail extends AbstractCLI {
 
   //private static final String[] LEAK_LABELS = {"none", "month-year", "day-month-year"};
 

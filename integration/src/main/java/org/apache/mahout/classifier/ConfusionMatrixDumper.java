@@ -32,7 +32,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
 import org.apache.mahout.math.Matrix;
 import org.apache.mahout.math.MatrixWritable;
@@ -47,7 +47,7 @@ import com.google.common.collect.Lists;
  * 
  * Intended to consume ConfusionMatrix SequenceFile output by Bayes TestClassifier class
  */
-public final class ConfusionMatrixDumper extends AbstractJob {
+public final class ConfusionMatrixDumper extends AbstractCLI {
   
   // HTML wrapper - default CSS
   private static final String HEADER = "<html>"

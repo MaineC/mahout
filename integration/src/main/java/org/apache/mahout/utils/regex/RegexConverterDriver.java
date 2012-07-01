@@ -26,14 +26,14 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.mahout.common.AbstractJob;
+import org.apache.mahout.common.AbstractCLI;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.commandline.DefaultOptionCreator;
 
 /**
  * Experimental
  */
-public class RegexConverterDriver extends AbstractJob {
+public class RegexConverterDriver extends AbstractCLI {
 
   @Override
   public int run(String[] args) throws Exception {
