@@ -17,10 +17,10 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
-public final class BitSetTest extends TasteTestCase {
+public final class BitSetTest extends MahoutTestCase {
 
   private static final int NUM_BITS = 100;
 

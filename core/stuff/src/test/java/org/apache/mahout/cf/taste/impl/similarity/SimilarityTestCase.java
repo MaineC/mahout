@@ -17,9 +17,9 @@
 
 package org.apache.mahout.cf.taste.impl.similarity;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 
-abstract class SimilarityTestCase extends TasteTestCase {
+abstract class SimilarityTestCase extends MahoutTestCase {
 
   static void assertCorrelationEquals(double expected, double actual) {
     if (Double.isNaN(expected)) {

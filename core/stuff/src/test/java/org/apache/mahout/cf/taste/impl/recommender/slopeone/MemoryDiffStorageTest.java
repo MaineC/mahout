@@ -19,15 +19,17 @@ package org.apache.mahout.cf.taste.impl.recommender.slopeone;
 
 import org.apache.mahout.cf.taste.common.NoSuchUserException;
 import org.apache.mahout.cf.taste.common.Weighting;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.FastIDSet;
 import org.apache.mahout.cf.taste.impl.common.RunningAverage;
 import org.apache.mahout.cf.taste.impl.common.RunningAverageAndStdDev;
 import org.apache.mahout.cf.taste.model.DataModel;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
+import static org.apache.mahout.test.TasteTestUtils.*;
+
 /** Tests {@link MemoryDiffStorage}. */
-public final class MemoryDiffStorageTest extends TasteTestCase {
+public final class MemoryDiffStorageTest extends MahoutTestCase {
 
   @Test
   public void testRecommendableIDsVariedWeighted() throws Exception {

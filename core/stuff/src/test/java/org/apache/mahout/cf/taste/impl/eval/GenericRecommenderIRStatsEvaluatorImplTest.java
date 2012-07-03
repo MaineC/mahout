@@ -21,17 +21,18 @@ import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.eval.IRStatistics;
 import org.apache.mahout.cf.taste.eval.RecommenderBuilder;
 import org.apache.mahout.cf.taste.eval.RecommenderIRStatsEvaluator;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.recommender.slopeone.SlopeOneRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.common.MahoutTestCase;
+import org.apache.mahout.test.TasteTestUtils;
 import org.junit.Test;
 
-public final class GenericRecommenderIRStatsEvaluatorImplTest extends TasteTestCase {
+public final class GenericRecommenderIRStatsEvaluatorImplTest extends MahoutTestCase {
 
   @Test
   public void testEvaluate() throws Exception {
-    DataModel model = getDataModel();
+    DataModel model = TasteTestUtils.getDataModel();
     RecommenderBuilder builder = new RecommenderBuilder() {
       @Override
       public Recommender buildRecommender(DataModel dataModel) throws TasteException {

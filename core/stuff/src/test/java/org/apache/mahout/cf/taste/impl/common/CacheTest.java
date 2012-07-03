@@ -18,13 +18,13 @@
 package org.apache.mahout.cf.taste.impl.common;
 
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.RandomUtils;
 import org.junit.Test;
 
 import java.util.Random;
 
-public final class CacheTest extends TasteTestCase {
+public final class CacheTest extends MahoutTestCase {
 
   @Test
   public void testLotsOfGets() throws TasteException {

@@ -18,15 +18,15 @@
 package org.apache.mahout.cf.taste.impl.model.file;
 
 import java.io.File;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.model.IDMigrator;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Tests {@link FileIDMigrator}
  */
-public final class FileIDMigratorTest extends TasteTestCase {
+public final class FileIDMigratorTest extends MahoutTestCase {
 
   private static final String[] STRING_IDS = {
       "dog",

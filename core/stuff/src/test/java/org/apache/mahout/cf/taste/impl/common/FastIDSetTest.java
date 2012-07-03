@@ -17,7 +17,7 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.RandomUtils;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ import java.util.HashSet;
 import java.util.Random;
 
 /** <p>Tests {@link FastIDSet}.</p> */
-public final class FastIDSetTest extends TasteTestCase {
+public final class FastIDSetTest extends MahoutTestCase {
 
   @Test
   public void testContainsAndAdd() {

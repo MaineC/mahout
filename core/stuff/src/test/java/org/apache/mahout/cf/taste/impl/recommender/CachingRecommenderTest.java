@@ -18,13 +18,13 @@
 package org.apache.mahout.cf.taste.impl.recommender;
 
 import org.apache.commons.lang.mutable.MutableInt;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.recommender.IDRescorer;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 /** <p>Tests {@link CachingRecommender}.</p> */
-public final class CachingRecommenderTest extends TasteTestCase {
+public final class CachingRecommenderTest extends MahoutTestCase {
 
   @Test
   public void testRecommender() throws Exception {

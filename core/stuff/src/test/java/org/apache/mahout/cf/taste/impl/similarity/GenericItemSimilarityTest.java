@@ -26,6 +26,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.apache.mahout.test.TasteTestUtils.*;
+
 /** <p>Tests {@link GenericItemSimilarity}.</p> */
 public final class GenericItemSimilarityTest extends SimilarityTestCase {
 

@@ -19,10 +19,10 @@ package org.apache.mahout.cf.taste.hadoop.als;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.FullRunningAverage;
 import org.apache.mahout.cf.taste.impl.common.RunningAverage;
 import org.apache.mahout.common.HadoopUtil;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Matrix;
 import org.apache.mahout.math.MatrixSlice;
@@ -40,7 +40,7 @@ import java.util.Iterator;
 import com.carrotsearch.randomizedtesting.annotations.Nightly;
 
 @Nightly
-public class ParallelALSFactorizationJobTest extends TasteTestCase {
+public class ParallelALSFactorizationJobTest extends MahoutTestCase {
 
   private static final Logger log = LoggerFactory.getLogger(ParallelALSFactorizationJobTest.class);
 

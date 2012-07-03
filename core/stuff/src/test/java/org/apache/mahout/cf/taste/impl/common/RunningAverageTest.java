@@ -17,11 +17,11 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 /** <p>Tests {@link FullRunningAverage}.</p> */
-public final class RunningAverageTest extends TasteTestCase {
+public final class RunningAverageTest extends MahoutTestCase {
 
   @Test
   public void testFull() {

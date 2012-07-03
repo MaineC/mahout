@@ -17,13 +17,13 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 /**
  * <p>Tests {@link WeightedRunningAverage} and {@link WeightedRunningAverageAndStdDev}.</p>
  */
-public final class WeightedRunningAverageTest extends TasteTestCase {
+public final class WeightedRunningAverageTest extends MahoutTestCase {
 
   @Test
   public void testWeighted() {

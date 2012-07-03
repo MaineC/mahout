@@ -18,7 +18,6 @@
 package org.apache.mahout.cf.taste.impl.recommender;
 
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
 import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
@@ -27,12 +26,15 @@ import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.util.List;
 
+import static org.apache.mahout.test.TasteTestUtils.*;
+
 /** <p>Tests {@link GenericUserBasedRecommender}.</p> */
-public final class GenericUserBasedRecommenderTest extends TasteTestCase {
+public final class GenericUserBasedRecommenderTest extends MahoutTestCase {
 
   @Test
   public void testRecommender() throws Exception {

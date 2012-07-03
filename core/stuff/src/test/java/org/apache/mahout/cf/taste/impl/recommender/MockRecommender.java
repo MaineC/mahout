@@ -19,11 +19,11 @@ package org.apache.mahout.cf.taste.impl.recommender;
 
 import org.apache.commons.lang.mutable.MutableInt;
 import org.apache.mahout.cf.taste.common.Refreshable;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.IDRescorer;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.test.TasteTestUtils;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -68,7 +68,7 @@ final class MockRecommender implements Recommender {
 
   @Override
   public DataModel getDataModel() {
-    return TasteTestCase.getDataModel(
+    return TasteTestUtils.getDataModel(
             new long[] {1, 2, 3},
             new Double[][]{{1.0},{2.0},{3.0}});
   }

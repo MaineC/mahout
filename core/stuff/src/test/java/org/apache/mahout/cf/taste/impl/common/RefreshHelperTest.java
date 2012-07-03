@@ -18,14 +18,14 @@
 package org.apache.mahout.cf.taste.impl.common;
 
 import org.apache.mahout.cf.taste.common.Refreshable;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.util.Collection;
 import java.util.HashSet;
 
 /** Tests {@link RefreshHelper} */
-public final class RefreshHelperTest extends TasteTestCase {
+public final class RefreshHelperTest extends MahoutTestCase {
 
   @Test
   public void testCallable() {

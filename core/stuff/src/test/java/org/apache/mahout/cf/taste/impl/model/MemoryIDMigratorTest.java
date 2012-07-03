@@ -17,14 +17,14 @@
 
 package org.apache.mahout.cf.taste.impl.model;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.model.IDMigrator;
 
 import java.util.Collections;
 import org.apache.mahout.cf.taste.model.UpdatableIDMigrator;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
-public final class MemoryIDMigratorTest extends TasteTestCase {
+public final class MemoryIDMigratorTest extends MahoutTestCase {
 
   private static final String DUMMY_STRING = "Mahout";
   private static final long DUMMY_ID = -6311185995763544451L;

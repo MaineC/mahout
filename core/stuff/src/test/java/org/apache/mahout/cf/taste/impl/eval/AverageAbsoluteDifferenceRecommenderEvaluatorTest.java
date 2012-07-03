@@ -20,17 +20,18 @@ package org.apache.mahout.cf.taste.impl.eval;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.eval.RecommenderBuilder;
 import org.apache.mahout.cf.taste.eval.RecommenderEvaluator;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.recommender.slopeone.SlopeOneRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.common.MahoutTestCase;
+import org.apache.mahout.test.TasteTestUtils;
 import org.junit.Test;
 
-public final class AverageAbsoluteDifferenceRecommenderEvaluatorTest extends TasteTestCase {
+public final class AverageAbsoluteDifferenceRecommenderEvaluatorTest extends MahoutTestCase {
 
   @Test
   public void testEvaluate() throws Exception {
-    DataModel model = getDataModel();
+    DataModel model = TasteTestUtils.getDataModel();
     RecommenderBuilder builder = new RecommenderBuilder() {
       @Override
       public Recommender buildRecommender(DataModel dataModel) throws TasteException {

@@ -22,6 +22,8 @@ import org.apache.mahout.cf.taste.model.Preference;
 import org.apache.mahout.cf.taste.model.PreferenceArray;
 import org.junit.Test;
 
+import static org.apache.mahout.test.TasteTestUtils.getDataModel;
+
 /** <p>Tests {@link InverseUserFrequency}.</p> */
 public final class InverseUserFrequencyTest extends TransformTestCase {
 

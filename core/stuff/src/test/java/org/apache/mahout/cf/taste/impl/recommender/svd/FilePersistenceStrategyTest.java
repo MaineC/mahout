@@ -17,13 +17,13 @@
 
 package org.apache.mahout.cf.taste.impl.recommender.svd;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.FastByIDMap;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.io.File;
 
-public class FilePersistenceStrategyTest extends TasteTestCase {
+public class FilePersistenceStrategyTest extends MahoutTestCase {
 
   @Test
   public void persistAndLoad() throws Exception {

@@ -18,7 +18,7 @@
 package org.apache.mahout.cf.taste.impl.common;
 
 import com.google.common.collect.Maps;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.RandomUtils;
 import org.junit.Test;
 
@@ -30,7 +30,7 @@ import java.util.Random;
 import java.util.Set;
 
 /** <p>Tests {@link FastMap}.</p> */
-public final class FastMapTest extends TasteTestCase {
+public final class FastMapTest extends MahoutTestCase {
 
   @Test
   public void testPutAndGet() {

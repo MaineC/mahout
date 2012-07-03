@@ -17,8 +17,8 @@
 
 package org.apache.mahout.cf.taste.impl.similarity.jdbc;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
+import org.apache.mahout.common.MahoutTestCase;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -27,7 +27,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class MySQLJDBCInMemoryItemSimilarityTest extends TasteTestCase {
+public class MySQLJDBCInMemoryItemSimilarityTest extends MahoutTestCase {
 
   @Test
   public void testMemoryLoad() throws Exception {

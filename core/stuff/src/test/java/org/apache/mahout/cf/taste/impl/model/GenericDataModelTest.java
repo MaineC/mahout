@@ -22,13 +22,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
+
+import static org.apache.mahout.test.TasteTestUtils.*;
 
 /**
  * Tests {@link GenericDataModel}.
  */
-public final class GenericDataModelTest extends TasteTestCase {
+public final class GenericDataModelTest extends MahoutTestCase {
 
   @Test  
   public void testSerialization() throws Exception {

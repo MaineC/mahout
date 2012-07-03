@@ -17,10 +17,10 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
-public final class InvertedRunningAverageTest extends TasteTestCase {
+public final class InvertedRunningAverageTest extends MahoutTestCase {
 
   @Test
   public void testAverage() {

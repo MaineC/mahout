@@ -18,7 +18,6 @@
 package org.apache.mahout.cf.taste.impl.recommender;
 
 import com.google.common.collect.Lists;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.FastIDSet;
 import org.apache.mahout.cf.taste.impl.model.GenericPreference;
 import org.apache.mahout.cf.taste.impl.model.GenericUserPreferenceArray;
@@ -31,6 +30,7 @@ import org.apache.mahout.cf.taste.recommender.MostSimilarItemsCandidateItemsStra
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
+import org.apache.mahout.common.MahoutTestCase;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -38,8 +38,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import static org.apache.mahout.test.TasteTestUtils.*;
+
 /** <p>Tests {@link GenericItemBasedRecommender}.</p> */
-public final class GenericItemBasedRecommenderTest extends TasteTestCase {
+public final class GenericItemBasedRecommenderTest extends MahoutTestCase {
 
   @Test
   public void testRecommender() throws Exception {

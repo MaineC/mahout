@@ -17,14 +17,16 @@
 
 package org.apache.mahout.cf.taste.impl.recommender;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.util.List;
 
-public final class RandomRecommenderTest extends TasteTestCase {
+import static org.apache.mahout.test.TasteTestUtils.*;
+
+public final class RandomRecommenderTest extends MahoutTestCase {
 
   @Test
   public void testRecommender() throws Exception {

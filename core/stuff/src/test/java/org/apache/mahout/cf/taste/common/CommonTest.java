@@ -17,7 +17,7 @@
 
 package org.apache.mahout.cf.taste.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -26,7 +26,7 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 
 /** <p>Tests common classes.</p> */
-public final class CommonTest extends TasteTestCase {
+public final class CommonTest extends MahoutTestCase {
 
   @Test
   public void testTasteException() {

@@ -17,12 +17,12 @@
 
 package org.apache.mahout.cf.taste.impl.recommender;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.recommender.IDRescorer;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 /** <p>Tests {@link NullRescorer}.</p> */
-public final class NullRescorerTest extends TasteTestCase {
+public final class NullRescorerTest extends MahoutTestCase {
 
   @Test
   public void testItemRescorer() throws Exception {

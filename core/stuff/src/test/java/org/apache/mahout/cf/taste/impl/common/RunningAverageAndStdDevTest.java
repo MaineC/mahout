@@ -17,13 +17,13 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.RandomUtils;
 import org.junit.Test;
 
 import java.util.Random;
 
-public final class RunningAverageAndStdDevTest extends TasteTestCase {
+public final class RunningAverageAndStdDevTest extends MahoutTestCase {
 
   private static final double SMALL_EPSILON = 1.0;
 

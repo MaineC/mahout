@@ -19,15 +19,15 @@ package org.apache.mahout.cf.taste.impl.similarity.file;
 
 import java.io.File;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.similarity.GenericItemSimilarity;
 import org.apache.mahout.cf.taste.impl.similarity.GenericItemSimilarity.ItemItemSimilarity;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
 /** <p>Tests {@link FileItemSimilarity}.</p> */
-public final class FileItemSimilarityTest extends TasteTestCase {
+public final class FileItemSimilarityTest extends MahoutTestCase {
 
   private static final String[] data = {
       "1,5,0.125",

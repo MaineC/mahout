@@ -22,7 +22,6 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.FastIDSet;
 import org.apache.mahout.cf.taste.impl.model.GenericItemPreferenceArray;
 import org.apache.mahout.cf.taste.impl.model.GenericPreference;
@@ -31,13 +30,14 @@ import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.model.Preference;
 import org.apache.mahout.cf.taste.model.PreferenceArray;
 import org.apache.mahout.cf.taste.recommender.CandidateItemsStrategy;
+import org.apache.mahout.common.MahoutTestCase;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
 /**
  * Tests {@link PreferredItemsNeighborhoodCandidateItemsStrategy}
  */
-public final class PreferredItemsNeighborhoodCandidateItemsStrategyTest extends TasteTestCase {
+public final class PreferredItemsNeighborhoodCandidateItemsStrategyTest extends MahoutTestCase {
 
   @Test
   public void testStrategy() throws TasteException {

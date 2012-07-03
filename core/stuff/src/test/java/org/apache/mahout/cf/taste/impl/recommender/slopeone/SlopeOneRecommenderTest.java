@@ -18,17 +18,19 @@
 package org.apache.mahout.cf.taste.impl.recommender.slopeone;
 
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.recommender.ReversingRescorer;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.util.List;
 
+import static org.apache.mahout.test.TasteTestUtils.*;
+
 /** <p>Tests {@link SlopeOneRecommender}.</p> */
-public final class SlopeOneRecommenderTest extends TasteTestCase {
+public final class SlopeOneRecommenderTest extends MahoutTestCase {
 
   @Test
   public void testRecommender() throws Exception {

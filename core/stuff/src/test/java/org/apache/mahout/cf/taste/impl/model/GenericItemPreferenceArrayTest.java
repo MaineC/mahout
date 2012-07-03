@@ -17,11 +17,11 @@
 
 package org.apache.mahout.cf.taste.impl.model;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.model.PreferenceArray;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
-public final class GenericItemPreferenceArrayTest extends TasteTestCase {
+public final class GenericItemPreferenceArrayTest extends MahoutTestCase {
 
   @Test
   public void testUserID() {

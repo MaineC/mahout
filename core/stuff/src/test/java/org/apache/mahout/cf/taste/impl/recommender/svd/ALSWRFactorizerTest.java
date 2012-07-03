@@ -17,7 +17,6 @@
 
 package org.apache.mahout.cf.taste.impl.recommender.svd;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.FastByIDMap;
 import org.apache.mahout.cf.taste.impl.common.FullRunningAverage;
 import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
@@ -28,6 +27,7 @@ import org.apache.mahout.cf.taste.impl.model.GenericUserPreferenceArray;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.model.Preference;
 import org.apache.mahout.cf.taste.model.PreferenceArray;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Vector;
 import org.junit.Before;
@@ -35,7 +35,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class ALSWRFactorizerTest extends TasteTestCase {
+public class ALSWRFactorizerTest extends MahoutTestCase {
 
   private ALSWRFactorizer factorizer;
   private DataModel dataModel;

@@ -19,7 +19,6 @@ package org.apache.mahout.cf.taste.impl.recommender;
 
 import com.google.common.collect.Lists;
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.FastByIDMap;
 import org.apache.mahout.cf.taste.impl.common.FastIDSet;
 import org.apache.mahout.cf.taste.impl.model.GenericDataModel;
@@ -29,6 +28,7 @@ import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.model.Preference;
 import org.apache.mahout.cf.taste.model.PreferenceArray;
 import org.apache.mahout.cf.taste.recommender.CandidateItemsStrategy;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * Tests {@link SamplingCandidateItemsStrategy}
  */
-public final class SamplingCandidateItemsStrategyTest extends TasteTestCase {
+public final class SamplingCandidateItemsStrategyTest extends MahoutTestCase {
 
   @Test
   public void testStrategy() throws TasteException {

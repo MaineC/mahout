@@ -17,12 +17,12 @@
 
 package org.apache.mahout.cf.taste.impl.recommender;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.common.LongPrimitiveArrayIterator;
 import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
 import org.apache.mahout.cf.taste.impl.similarity.GenericItemSimilarity;
 import org.apache.mahout.cf.taste.impl.similarity.GenericUserSimilarity;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.RandomUtils;
 import org.junit.Test;
 
@@ -33,7 +33,7 @@ import java.util.Random;
 /**
  * Tests for {@link TopItems}.
  */
-public final class TopItemsTest extends TasteTestCase {
+public final class TopItemsTest extends MahoutTestCase {
 
   @Test
   public void testTopItems() throws Exception {

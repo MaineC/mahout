@@ -20,6 +20,8 @@ package org.apache.mahout.cf.taste.impl.similarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.junit.Test;
 
+import static org.apache.mahout.test.TasteTestUtils.*;
+
 /** <p>Tests {@link SpearmanCorrelationSimilarity}.</p> */
 public final class SpearmanCorrelationSimilarityTest extends SimilarityTestCase {
 

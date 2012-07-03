@@ -18,18 +18,19 @@
 package org.apache.mahout.cf.taste.impl.recommender.knn;
 
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.impl.recommender.ReversingRescorer;
 import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
+import org.apache.mahout.common.MahoutTestCase;
+import org.apache.mahout.test.TasteTestUtils;
 import org.junit.Test;
 
 import java.util.List;
 
-public final class KnnItemBasedRecommenderTest extends TasteTestCase {
+public final class KnnItemBasedRecommenderTest extends MahoutTestCase {
 
   @Test
   public void testRecommender() throws Exception {
@@ -47,7 +48,7 @@ public final class KnnItemBasedRecommenderTest extends TasteTestCase {
 
   @Test
   public void testHowMany() throws Exception {
-    DataModel dataModel = getDataModel(
+    DataModel dataModel = TasteTestUtils.getDataModel(
             new long[] {1, 2, 3, 4, 5},
             new Double[][] {
                     {0.1, 0.2},
@@ -72,7 +73,7 @@ public final class KnnItemBasedRecommenderTest extends TasteTestCase {
 
   @Test
   public void testRescorer() throws Exception {
-    DataModel dataModel = getDataModel(
+    DataModel dataModel = TasteTestUtils.getDataModel(
             new long[] {1, 2, 3},
             new Double[][] {
                     {0.1, 0.2},
@@ -112,7 +113,7 @@ public final class KnnItemBasedRecommenderTest extends TasteTestCase {
   }
 
   private static Recommender buildRecommender() throws TasteException {
-    DataModel dataModel = getDataModel();
+    DataModel dataModel = TasteTestUtils.getDataModel();
     ItemSimilarity similarity = new PearsonCorrelationSimilarity(dataModel);
     Optimizer optimizer = new ConjugateGradientOptimizer();
     return new KnnItemBasedRecommender(dataModel, similarity, optimizer, 5);

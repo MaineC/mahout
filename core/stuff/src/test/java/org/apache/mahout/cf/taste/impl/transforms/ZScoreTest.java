@@ -22,6 +22,8 @@ import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.transforms.PreferenceTransform;
 import org.junit.Test;
 
+import static org.apache.mahout.test.TasteTestUtils.getDataModel;
+
 /** <p>Tests {@link ZScore}.</p> */
 public final class ZScoreTest extends TransformTestCase {
 

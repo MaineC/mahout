@@ -17,18 +17,19 @@
 
 package org.apache.mahout.cf.taste.impl.recommender;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.common.MahoutTestCase;
+import org.apache.mahout.test.TasteTestUtils;
 import org.junit.Test;
 
 import java.util.List;
 
-public final class ItemUserAverageRecommenderTest extends TasteTestCase {
+public final class ItemUserAverageRecommenderTest extends MahoutTestCase {
 
   @Test
   public void testRecommender() throws Exception {
-    Recommender recommender = new ItemUserAverageRecommender(getDataModel());
+    Recommender recommender = new ItemUserAverageRecommender(TasteTestUtils.getDataModel());
     List<RecommendedItem> recommended = recommender.recommend(1, 1);
     assertNotNull(recommended);
     assertEquals(1, recommended.size());

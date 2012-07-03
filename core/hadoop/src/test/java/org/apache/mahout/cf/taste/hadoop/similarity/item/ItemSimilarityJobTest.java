@@ -35,7 +35,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.mahout.cf.taste.hadoop.EntityEntityWritable;
 import org.apache.mahout.cf.taste.hadoop.item.RecommenderConfig;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
@@ -51,7 +51,7 @@ import org.junit.Test;
  * some integration tests with tiny data sets at the end
  */
 @Nightly
-public final class ItemSimilarityJobTest extends TasteTestCase {
+public final class ItemSimilarityJobTest extends MahoutTestCase {
 
   private static final Pattern TAB = Pattern.compile("\t");
 

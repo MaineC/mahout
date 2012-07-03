@@ -17,12 +17,12 @@
 
 package org.apache.mahout.cf.taste.impl.common;
 
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
-public final class LongPrimitiveArrayIteratorTest extends TasteTestCase {
+public final class LongPrimitiveArrayIteratorTest extends MahoutTestCase {
 
   @Test(expected = NoSuchElementException.class)
   public void testEmpty() {

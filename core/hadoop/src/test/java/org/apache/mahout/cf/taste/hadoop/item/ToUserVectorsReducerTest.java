@@ -20,7 +20,7 @@ package org.apache.mahout.cf.taste.hadoop.item;
 import org.apache.hadoop.mapreduce.Counter;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.mahout.cf.taste.hadoop.TasteHadoopUtils;
-import org.apache.mahout.cf.taste.impl.TasteTestCase;
+import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.VarLongWritable;
 import org.apache.mahout.math.VectorWritable;
 import org.apache.mahout.math.hadoop.MathHelper;
@@ -32,7 +32,7 @@ import java.util.Arrays;
 /**
  * tests {@link ToUserVectorsReducer}
  */
-public class ToUserVectorsReducerTest extends TasteTestCase {
+public class ToUserVectorsReducerTest extends MahoutTestCase {
 
   @Test
   public void testToUsersReducerMinPreferencesUserIgnored() throws Exception {
