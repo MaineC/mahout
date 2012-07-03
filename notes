@@ -1,0 +1,26 @@
+
+check - mark long running tests as nightly
+check - untangle the huge jar for quicker build cycles
+check  - move writeables out
+check  - move cli stuff out
+check  - move all other stuff out - aggregator module
+check  - split distributed row matrix into job and hadoop stuff
+check  - move spectral clustering back into hadoop
+check  - get rid of the stupid test jar stuff
+check  - get all other driver stuff moved to hadoop, leaving only cli in cli
+check  - algorithm defaults are somewhat hidden in defaultoptioncreator for cmd options
+check  - copied TasteTestCase - fix
+check  - factor recommenderconfig defaults for itemsimilarity job and recommender job out
+check  - re-execute tests marked as nightly and check for failing tests - generate toString, equals, hashcode etc for config beans *sigh* I love boilerplate
+
+Fix remaining issues
+  - check methods in AbstractJob and AbstractCLI and move anything out that does not strictly belong there
+  - check MahoutTestCase, MahoutTestCase, MahoutHadoopTestCase, TasteTestCase, SolverTest and name speakingly
+  - move option name static fields to cli classes
+  - double check assembly file
+  - introduce test setups that delete test path
+  - introduce randomizer package for solvertesthelper
+  - remove code commented out in hebbiansolvertest
+  - turn todo and similar in code into jira issues
+  - copied class for df.data - fix
+
