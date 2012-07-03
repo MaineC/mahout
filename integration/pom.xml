@@ -109,6 +109,11 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>mahout-cli</artifactId>
     </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>mahout-hadoop-test-utils</artifactId>
+    </dependency>
+
 
       <!-- 3rd party -->
 

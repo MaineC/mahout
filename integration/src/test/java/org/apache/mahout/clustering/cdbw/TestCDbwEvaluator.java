@@ -28,7 +28,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.mahout.clustering.Cluster;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.clustering.TestClusterEvaluator;
 import org.apache.mahout.clustering.canopy.Canopy;
 import org.apache.mahout.clustering.canopy.CanopyDriver;
@@ -39,7 +38,6 @@ import org.apache.mahout.clustering.dirichlet.models.GaussianClusterDistribution
 import org.apache.mahout.clustering.evaluation.RepresentativePointsDriver;
 import org.apache.mahout.clustering.fuzzykmeans.FuzzyKMeansDriver;
 import org.apache.mahout.clustering.kmeans.KMeansDriver;
-import org.apache.mahout.clustering.kmeans.TestKmeansClustering;
 import org.apache.mahout.clustering.meanshift.MeanShiftCanopyDriver;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.distance.DistanceMeasure;
@@ -49,6 +47,8 @@ import org.apache.mahout.common.kernel.TriangularKernelProfile;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.ClusteringTestUtils;
+import org.apache.mahout.test.KMeansClusteringTestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -87,7 +87,7 @@ public final class TestCDbwEvaluator extends MahoutTestCase {
     testdata = getTestTempDirPath("testdata");
     output = getTestTempDirPath("output");
     // Create small reference data set
-    referenceData = TestKmeansClustering.getPointsWritable(REFERENCE);
+    referenceData = KMeansClusteringTestUtils.getPointsWritable(REFERENCE);
     // generate larger test data set for the clustering tests to chew on
     generateSamples();
   }

@@ -27,7 +27,6 @@ import org.apache.hadoop.io.DataOutputBuffer;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
 import org.apache.mahout.clustering.ClusterObservations;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.clustering.kmeans.TestKmeansClustering;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.MahoutTestCase;
@@ -36,6 +35,8 @@ import org.apache.mahout.common.distance.EuclideanDistanceMeasure;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.ClusteringTestUtils;
+import org.apache.mahout.test.KMeansClusteringTestUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -78,7 +79,7 @@ public final class TestFuzzyKmeansClustering extends MahoutTestCase {
 
   @Test
   public void testFuzzyKMeansSeqJob() throws Exception {
-    List<VectorWritable> points = TestKmeansClustering.getPointsWritable(TestKmeansClustering.REFERENCE);
+    List<VectorWritable> points = KMeansClusteringTestUtils.getPointsWritable(TestKmeansClustering.REFERENCE);
 
     Path pointsPath = getTestTempDirPath("points");
     Path clustersPath = getTestTempDirPath("clusters");
@@ -132,7 +133,7 @@ public final class TestFuzzyKmeansClustering extends MahoutTestCase {
 
   @Test
   public void testFuzzyKMeansMRJob() throws Exception {
-    List<VectorWritable> points = TestKmeansClustering.getPointsWritable(TestKmeansClustering.REFERENCE);
+    List<VectorWritable> points = KMeansClusteringTestUtils.getPointsWritable(TestKmeansClustering.REFERENCE);
 
     Path pointsPath = getTestTempDirPath("points");
     Path clustersPath = getTestTempDirPath("clusters");

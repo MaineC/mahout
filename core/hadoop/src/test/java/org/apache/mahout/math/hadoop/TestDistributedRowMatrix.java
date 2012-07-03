@@ -25,7 +25,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.iterator.sequencefile.PathFilters;
@@ -38,6 +37,7 @@ import org.apache.mahout.math.VectorIterable;
 import org.apache.mahout.math.VectorWritable;
 import org.apache.mahout.math.decomposer.SolverTestHelper;
 import org.apache.mahout.math.function.Functions;
+import org.apache.mahout.test.ClusteringTestUtils;
 import org.junit.Test;
 
 import com.carrotsearch.randomizedtesting.annotations.Nightly;

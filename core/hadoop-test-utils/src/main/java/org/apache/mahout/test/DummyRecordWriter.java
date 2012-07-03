@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.apache.mahout.common;
+package org.apache.mahout.test;
 
 import com.google.common.collect.Lists;
 
@@ -35,6 +35,7 @@ import org.apache.hadoop.mapreduce.ReduceContext;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.TaskAttemptID;
+
 
 public final class DummyRecordWriter<K, V> extends RecordWriter<K, V> {
 

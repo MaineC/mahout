@@ -35,7 +35,6 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Writable;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.clustering.canopy.CanopyDriver;
 import org.apache.mahout.clustering.iterator.CanopyClusteringPolicy;
 import org.apache.mahout.common.HadoopUtil;
@@ -45,6 +44,7 @@ import org.apache.mahout.common.iterator.sequencefile.PathFilters;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.ClusteringTestUtils;
 import org.junit.Before;
 import org.junit.Test;
 

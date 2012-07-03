@@ -26,7 +26,6 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.mahout.clustering.Cluster;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.clustering.iterator.ClusterWritable;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.distance.ManhattanDistanceMeasure;
@@ -34,6 +33,7 @@ import org.apache.mahout.common.iterator.sequencefile.SequenceFileValueIterable;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.ClusteringTestUtils;
 import org.junit.Before;
 import org.junit.Test;
 

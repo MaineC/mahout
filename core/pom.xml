@@ -39,6 +39,7 @@
     <module>hadoop</module>
     <module>cli</module>
     <module>stuff</module>
+    <module>hadoop-test-utils</module>
   </modules>
 
   <build>

@@ -37,7 +37,6 @@ import org.apache.mahout.clustering.evaluation.ClusterEvaluator;
 import org.apache.mahout.clustering.evaluation.RepresentativePointsDriver;
 import org.apache.mahout.clustering.fuzzykmeans.FuzzyKMeansDriver;
 import org.apache.mahout.clustering.kmeans.KMeansDriver;
-import org.apache.mahout.clustering.kmeans.TestKmeansClustering;
 import org.apache.mahout.clustering.meanshift.MeanShiftCanopyDriver;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.MahoutTestCase;
@@ -51,6 +50,8 @@ import org.apache.mahout.common.kernel.IKernelProfile;
 import org.apache.mahout.common.kernel.TriangularKernelProfile;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.ClusteringTestUtils;
+import org.apache.mahout.test.KMeansClusteringTestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -89,7 +90,7 @@ public final class TestClusterEvaluator extends MahoutTestCase {
     testdata = getTestTempDirPath("testdata");
     output = getTestTempDirPath("output");
     // Create small reference data set
-    referenceData = TestKmeansClustering.getPointsWritable(REFERENCE);
+    referenceData = KMeansClusteringTestUtils.getPointsWritable(REFERENCE);
     // generate larger test data set for the clustering tests to chew on
     generateSamples();
   }

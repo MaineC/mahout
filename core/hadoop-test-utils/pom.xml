@@ -28,8 +28,8 @@
   </parent>
 
   <!-- modules inherit parent's group id and version. -->
-  <artifactId>mahout-hadoop</artifactId>
-  <name>Mahout Hadoop</name>
+  <artifactId>mahout-hadoop-test-utils</artifactId>
+  <name>Mahout Hadoop Test Utils</name>
   <description>Scalable machine learning libraries</description>
 
   <packaging>jar</packaging>
@@ -64,26 +64,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- create core hadoop job jar -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>job</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <descriptors>
-                <descriptor>src/main/assembly/job.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
       </plugin>
@@ -114,95 +94,29 @@
     <!-- our modules -->
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-math</artifactId>
-    </dependency>
-     <dependency>
-      <groupId>${project.groupId}</groupId>
       <artifactId>mahout-test-utils</artifactId>
     </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-stuff</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-hadoop-test-utils</artifactId>
-    </dependency>
-
-
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>mahout-write</artifactId>
-    </dependency>
-
     <!-- Third Party -->
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-core-asl</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-    </dependency>
-
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+ 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-jcl</artifactId>
       <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.thoughtworks.xstream</groupId>
-      <artifactId>xstream</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-analyzers</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.mahout.commons</groupId>
-      <artifactId>commons-cli</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-math</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-
     <dependency>
       <groupId>org.easymock</groupId>
       <artifactId>easymock</artifactId>
-      <scope>test</scope>
+      <scope>provided</scope>
     </dependency>
-    
-    <dependency>
-      <groupId>com.carrotsearch.randomizedtesting</groupId>
-      <artifactId>randomizedtesting-runner</artifactId>
-      <scope>test</scope>
-   </dependency>
+   
   </dependencies>
   
   <profiles>

@@ -25,7 +25,6 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.mahout.clustering.AbstractCluster;
 import org.apache.mahout.clustering.Cluster;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.clustering.canopy.Canopy;
 import org.apache.mahout.clustering.classify.ClusterClassifier;
 import org.apache.mahout.clustering.dirichlet.models.GaussianCluster;
@@ -46,6 +45,8 @@ import org.apache.mahout.common.distance.ManhattanDistanceMeasure;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.ClusteringTestUtils;
+import org.apache.mahout.test.KMeansClusteringTestUtils;
 import org.junit.Test;
 
 import com.carrotsearch.randomizedtesting.annotations.Nightly;
@@ -197,7 +198,7 @@ public final class TestClusterClassifier extends MahoutTestCase {
   
   @Test
   public void testClusterIteratorKMeans() {
-    List<Vector> data = TestKmeansClustering.getPoints(TestKmeansClustering.REFERENCE);
+    List<Vector> data = KMeansClusteringTestUtils.getPoints(TestKmeansClustering.REFERENCE);
     ClusterClassifier prior = newKlusterClassifier();
     ClusterIterator iterator = new ClusterIterator();
     ClusterClassifier posterior = iterator.iterate(data, prior, 5);
@@ -209,7 +210,7 @@ public final class TestClusterClassifier extends MahoutTestCase {
   
   @Test
   public void testClusterIteratorDirichlet() {
-    List<Vector> data = TestKmeansClustering.getPoints(TestKmeansClustering.REFERENCE);
+    List<Vector> data = KMeansClusteringTestUtils.getPoints(TestKmeansClustering.REFERENCE);
     ClusterClassifier prior = newKlusterClassifier();
     ClusterIterator iterator = new ClusterIterator();
     ClusterClassifier posterior = iterator.iterate(data, prior, 5);
@@ -226,7 +227,7 @@ public final class TestClusterClassifier extends MahoutTestCase {
     Path outPath = getTestTempDirPath("output");
     Configuration conf = new Configuration();
     FileSystem fs = FileSystem.get(pointsPath.toUri(), conf);
-    List<VectorWritable> points = TestKmeansClustering.getPointsWritable(TestKmeansClustering.REFERENCE);
+    List<VectorWritable> points = KMeansClusteringTestUtils.getPointsWritable(TestKmeansClustering.REFERENCE);
     ClusteringTestUtils.writePointsToFile(points, new Path(pointsPath, "file1"), fs, conf);
     Path path = new Path(priorPath, "priorClassifier");
     ClusterClassifier prior = newKlusterClassifier();
@@ -258,7 +259,7 @@ public final class TestClusterClassifier extends MahoutTestCase {
     Path outPath = getTestTempDirPath("output");
     Configuration conf = new Configuration();
     FileSystem fs = FileSystem.get(pointsPath.toUri(), conf);
-    List<VectorWritable> points = TestKmeansClustering.getPointsWritable(TestKmeansClustering.REFERENCE);
+    List<VectorWritable> points = KMeansClusteringTestUtils.getPointsWritable(TestKmeansClustering.REFERENCE);
     ClusteringTestUtils.writePointsToFile(points, new Path(pointsPath, "file1"), fs, conf);
     Path path = new Path(priorPath, "priorClassifier");
     ClusterClassifier prior = newKlusterClassifier();

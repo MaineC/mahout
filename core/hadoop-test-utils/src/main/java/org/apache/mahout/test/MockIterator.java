@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.apache.mahout.common;
+package org.apache.mahout.test;
 
 import org.apache.hadoop.io.DataInputBuffer;
 import org.apache.hadoop.mapred.RawKeyValueIterator;

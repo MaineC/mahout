@@ -26,11 +26,9 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.clustering.canopy.CanopyDriver;
 import org.apache.mahout.clustering.classify.WeightedVectorWritable;
 import org.apache.mahout.clustering.iterator.ClusterWritable;
-import org.apache.mahout.common.DummyOutputCollector;
 import org.apache.mahout.common.HadoopUtil;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.Pair;
@@ -38,17 +36,18 @@ import org.apache.mahout.common.distance.DistanceMeasure;
 import org.apache.mahout.common.distance.EuclideanDistanceMeasure;
 import org.apache.mahout.common.distance.ManhattanDistanceMeasure;
 import org.apache.mahout.common.iterator.sequencefile.SequenceFileIterable;
-import org.apache.mahout.math.RandomAccessSparseVector;
-import org.apache.mahout.math.SequentialAccessSparseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.ClusteringTestUtils;
+import org.apache.mahout.test.DummyOutputCollector;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.carrotsearch.randomizedtesting.annotations.Nightly;
 
-import com.google.common.collect.Lists;
 import com.google.common.io.Closeables;
+
+import static org.apache.mahout.test.KMeansClusteringTestUtils.*;
 
 @Nightly
 public final class TestKmeansClustering extends MahoutTestCase {
@@ -66,26 +65,6 @@ public final class TestKmeansClustering extends MahoutTestCase {
     super.setUp();
     Configuration conf = new Configuration();
     fs = FileSystem.get(conf);
-  }
-  
-  public static List<VectorWritable> getPointsWritable(double[][] raw) {
-    List<VectorWritable> points = Lists.newArrayList();
-    for (double[] fr : raw) {
-      Vector vec = new RandomAccessSparseVector(fr.length);
-      vec.assign(fr);
-      points.add(new VectorWritable(vec));
-    }
-    return points;
-  }
-  
-  public static List<Vector> getPoints(double[][] raw) {
-    List<Vector> points = Lists.newArrayList();
-    for (double[] fr : raw) {
-      Vector vec = new SequentialAccessSparseVector(fr.length);
-      vec.assign(fr);
-      points.add(vec);
-    }
-    return points;
   }
   
   /**

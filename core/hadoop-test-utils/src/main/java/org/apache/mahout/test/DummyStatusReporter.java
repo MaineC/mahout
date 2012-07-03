@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.apache.mahout.common;
+package org.apache.mahout.test;
 
 import static org.easymock.EasyMock.createMockBuilder;
 

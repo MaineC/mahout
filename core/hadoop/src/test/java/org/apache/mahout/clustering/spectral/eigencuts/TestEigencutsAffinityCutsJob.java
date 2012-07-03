@@ -32,11 +32,11 @@ import org.apache.mahout.clustering.spectral.common.VertexWritable;
 import org.apache.mahout.clustering.spectral.eigencuts.EigencutsAffinityCutsJob.EigencutsAffinityCutsCombiner;
 import org.apache.mahout.clustering.spectral.eigencuts.EigencutsAffinityCutsJob.EigencutsAffinityCutsMapper;
 import org.apache.mahout.clustering.spectral.eigencuts.EigencutsAffinityCutsJob.EigencutsAffinityCutsReducer;
-import org.apache.mahout.common.DummyRecordWriter;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.DenseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.DummyRecordWriter;
 import org.junit.Test;
 
 /**

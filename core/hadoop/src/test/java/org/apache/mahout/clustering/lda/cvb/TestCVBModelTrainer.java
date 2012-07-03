@@ -22,12 +22,12 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.mahout.clustering.ClusteringTestUtils;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.common.RandomUtils;
 import org.apache.mahout.math.Matrix;
 import org.apache.mahout.math.MatrixUtils;
 import org.apache.mahout.math.function.DoubleFunction;
+import org.apache.mahout.test.ClusteringTestUtils;
 import org.junit.Test;
 
 import java.io.IOException;

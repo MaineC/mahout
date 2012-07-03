@@ -27,11 +27,11 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.mahout.clustering.spectral.common.MatrixDiagonalizeJob.MatrixDiagonalizeMapper;
 import org.apache.mahout.clustering.spectral.common.MatrixDiagonalizeJob.MatrixDiagonalizeReducer;
 import org.apache.mahout.clustering.spectral.eigencuts.EigencutsKeys;
-import org.apache.mahout.common.DummyRecordWriter;
 import org.apache.mahout.common.MahoutTestCase;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
+import org.apache.mahout.test.DummyRecordWriter;
 import org.junit.Test;
 
 /**

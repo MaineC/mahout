@@ -129,6 +129,12 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
+        <artifactId>mahout-hadoop-test-utils</artifactId>
+        <groupId>${project.groupId}</groupId>
+        <version>${project.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
         <artifactId>mahout-stuff</artifactId>
         <groupId>${project.groupId}</groupId>
         <version>${project.version}</version>

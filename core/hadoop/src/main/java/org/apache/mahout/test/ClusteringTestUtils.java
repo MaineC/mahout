@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.apache.mahout.clustering;
+package org.apache.mahout.test;
 
 import com.google.common.io.Closeables;
 import org.apache.hadoop.conf.Configuration;

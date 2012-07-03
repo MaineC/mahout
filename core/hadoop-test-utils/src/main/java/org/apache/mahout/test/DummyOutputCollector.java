@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.apache.mahout.common;
+package org.apache.mahout.test;
 
 import com.google.common.collect.Lists;
 import org.apache.hadoop.io.Writable;
